@@ -1,0 +1,96 @@
+.join_container {
+    width: 375px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.join_logo {
+    font-size: 70px;
+    margin-bottom: 100px;
+}
+
+.join_logo>p{
+    margin: 0;
+}
+  
+.join_text {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+  
+.join_email, 
+.join_pw, 
+.join_pwChk, 
+.join_nickname,
+.join_tel,
+.join_nextBtn,
+.join_loginBtn {
+    width: 345px; // 너비 345px 고정
+    padding: 10px; // 동일한 패딩 적용
+    border: 1px solid #ccc; // 동일한 테두리
+    border-radius: 4px; // 동일한 모서리 둥글기
+    box-sizing: border-box; // 테두리와 패딩을 포함한 전체 크기 계산
+  
+    &::placeholder {
+      color: lightgray;
+    }
+  
+    &:not(.login_joinBtn) {
+      margin-bottom: 10px;
+    }
+}
+
+.join_telBox{
+    margin-bottom: 15px;
+}
+
+.join_email_error,
+.join_pw_error,
+.join_pwChk_error,
+.join_nickname_error,
+.join_tel_error {
+    width: 345px; // 너비 345px 고정
+    padding: 10px; // 동일한 패딩 적용
+    border: 1px solid red; // 동일한 테두리
+    border-radius: 4px; // 동일한 모서리 둥글기
+    box-sizing: border-box; // 테두리와 패딩을 포함한 전체 크기 계산
+    color: red;
+
+    &::placeholder {
+        color: red;
+    }
+
+    &:not(.login_joinBtn) {
+        margin-bottom: 10px;    
+    }
+}
+
+.join_nextBtn {
+    background-color: black;
+    color: white;
+
+    &:hover {
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+
+.join_loginBtn {
+    background-color: white;
+    border-color: black;
+
+    &:hover {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+    }
+}
+
+.join_email.error, .join_pw.error,
+.join_pwChk.error, .join_nickname.error,
+.join_tel_error{
+    border: 1px solid red($color: #000000);
+}

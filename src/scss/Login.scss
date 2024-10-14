@@ -1,0 +1,99 @@
+body {
+    width: 375px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    min-height: 100vh; // 브라우저 창의 높이를 기준으로 최소 높이 설정
+}
+  
+.login_container {
+    width: 375px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.login_logo {
+    font-size: 70px;
+    margin-bottom: 120px;
+}
+
+.login_logo>p{
+    margin: 0;
+}
+  
+.login_email, 
+.login_password, 
+.login_loginBtn, 
+.login_joinBtn {
+    width: 345px; // 너비 345px 고정
+    padding: 10px; // 동일한 패딩 적용
+    border: 1px solid #ccc; // 동일한 테두리
+    border-radius: 4px; // 동일한 모서리 둥글기
+    box-sizing: border-box; // 테두리와 패딩을 포함한 전체 크기 계산
+  
+    &::placeholder {
+      color: lightgray;
+    }
+  
+    &:not(.login_joinBtn) {
+      margin-bottom: 10px;
+    }
+}
+  
+.login_loginBtn {
+    background-color: black;
+    color: white;
+
+    &:hover {
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+  
+.login_joinBtn {
+    background-color: white;
+    border-color: black;
+
+    &:hover {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+    }
+}
+  
+.login_pwFindBtn {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 16px;
+    padding: 0;
+
+    &:hover {
+      font-weight: bold;
+      cursor: pointer;
+    }
+}
+  
+.divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 30px 0;
+  
+    hr {
+        flex: 1;
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 0 10px;
+    }
+  
+    span {
+        white-space: nowrap;
+        color: #aaa;
+    }
+}
