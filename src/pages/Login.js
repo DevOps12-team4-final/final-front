@@ -7,8 +7,10 @@ import '../scss/Login.scss';
 function Login() {
 
   const [userForm, setUserForm] = useState({
+    userId: '',
     email: '',
     password: '',
+    profileImage: '',
   });
 
   const navigate = useNavigate();
@@ -36,7 +38,7 @@ function Login() {
       console.log('로그인 응답 데이터: ', result);
 
       if(result){
-        navigate('/logout', {state: result.item});
+        navigate('/feed', {state: result.item});
         console.log('로그인 성공');
       }
     } catch(error){

@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import store from './store/store'; // 방금 만든 store 파일 가져오기
 import Login from './pages/Login';
 import Post from './pages/Post';

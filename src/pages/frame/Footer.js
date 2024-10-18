@@ -1,8 +1,7 @@
 import React from 'react'
 import '../../scss/framescss/Footer.scss';
-import profile from '../../images/profile.jpg';
 
-function Footer() {
+function Footer({profileImage}) {
   return (
     <footer className="footer">
       <nav>
@@ -24,7 +23,7 @@ function Footer() {
                 <span>채팅</span>
             </button>
             <button className="icon_button">
-                <img src={profile} alt="프로필" className='footer_profile'/>
+                <img src={profileImage} alt="프로필" className='footer_profile'/>
                 <span>마이</span>
             </button>
         </div>

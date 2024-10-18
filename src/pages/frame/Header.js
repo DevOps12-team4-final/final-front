@@ -10,7 +10,7 @@ function Header() {
   return (
     <header className="header">
         <div className="header_title_box">
-            <p className='header_title'>커뮤니티</p>
+            <p className='header_title'>Logo</p>
             <div className="header_icons">
                 <button className="material-icons">notifications</button>
                 <button className="material-icons">search</button>

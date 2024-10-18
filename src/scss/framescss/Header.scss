@@ -45,12 +45,14 @@
 }
 
 .header_tab{
+    width: 600px;
     display: flex;
+    justify-content: flex-start;
 }
 
 .first_tab{
     height: 60px;
-    width: 300px;
+    width: 90px;
     padding: 0px;
     font-size: 20px;
     border: none;
@@ -62,11 +64,16 @@
 .second_tab{
     color: lightgray;
     height: 60px;
-    width: 300px;
+    width: 90px;
     padding: 0px;
     font-size: 20px;
     border: none;
     border-bottom: 2px solid lightgray;
     background: transparent;
     cursor: pointer;
+
+    &:hover{
+        color: darkgray;
+        border-bottom-color: darkgray;
+    }
 }
