@@ -50,30 +50,53 @@
     justify-content: flex-start;
 }
 
-.first_tab{
-    height: 60px;
-    width: 90px;
-    padding: 0px;
-    font-size: 20px;
-    border: none;
-    border-bottom: 2px solid black;
-    background: transparent;
-    cursor: pointer;
-}
-
+.first_tab,
 .second_tab{
-    color: lightgray;
     height: 60px;
     width: 90px;
     padding: 0px;
     font-size: 20px;
     border: none;
-    border-bottom: 2px solid lightgray;
     background: transparent;
     cursor: pointer;
+    color: lightgray;
+    border-bottom: 2px solid lightgray;
 
-    &:hover{
+    &.active{
+        color: black;
+        border-bottom-color: black;
+    }
+
+    &:not(.active):hover { // 비활성화된 상태에서의 hover 스타일
         color: darkgray;
         border-bottom-color: darkgray;
-    }
+      }
 }
+
+// .first_tab{
+//     height: 60px;
+//     width: 90px;
+//     padding: 0px;
+//     font-size: 20px;
+//     border: none;
+//     border-bottom: 2px solid black;
+//     background: transparent;
+//     cursor: pointer;
+// }
+
+// .second_tab{
+//     color: lightgray;
+//     height: 60px;
+//     width: 90px;
+//     padding: 0px;
+//     font-size: 20px;
+//     border: none;
+//     border-bottom: 2px solid lightgray;
+//     background: transparent;
+//     cursor: pointer;
+
+//     &:hover{
+//         color: darkgray;
+//         border-bottom-color: darkgray;
+//     }
+// }

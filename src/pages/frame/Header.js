@@ -1,10 +1,6 @@
 import React from 'react'
 import '../../scss/framescss/Header.scss';  // 정확한 경로로 수정
-function Header() {
-
-  
-
-
+function Header({onSelectTab, activeTab}) {
 
 
   return (
@@ -17,8 +13,10 @@ function Header() {
             </div>
         </div>
         <div className="header_tab">
-            <button className="first_tab">최신</button>
-            <button className="second_tab">팔로잉</button>
+            <button className={`first_tab ${activeTab === 'latest' ? 'active' : ''}`}
+                    onClick={() => onSelectTab('latest')}>최신</button>
+            <button className={`second_tab ${activeTab === 'following' ? 'active' : ''}`}
+                    onClick={() => onSelectTab('following')}>팔로잉</button>
         </div>
     </header>
   );

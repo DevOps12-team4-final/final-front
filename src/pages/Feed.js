@@ -20,7 +20,7 @@ function Feed() {
     });
 
     const [profileImage] = useState(`${baseURL}${userForm.profileImage}`);
-    
+
     // 드래그 상태 관리
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
@@ -30,17 +30,20 @@ function Feed() {
     const [loading, setLoading] = useState(false);
     const [hasNextPage, setHasNextPage] = useState(false);
     // 내가 호출했던 페이지의 히스토리를 저장
-    const [pageParams, setPageParams] = useState([]);
+    // const [pageParams, setPageParams] = useState([]);
     const observerRef = useRef();
-    console.log(observerRef);
+    const [activeTab, setActiveTab] = useState('latest'); // 현재 활성화된 탭 상태
+
 
     const fetchFeed = useCallback(async(page) => {
-        if(pageParams.includes(page)) return;
+        // if(pageParams.includes(page)) return;
         setLoading(true);
 
         try{
             const token = sessionStorage.getItem('ACCESS_TOKEN');
-            const response = await fetch(`/feed?page=${page}&size=10`, {
+            const feedType = activeTab === 'latest' ? 'latest' : 'following';
+            console.log(activeTab);
+            const response = await fetch(`/feeds/${feedType}?page=${page}&size=10`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -54,8 +57,8 @@ function Feed() {
                 );
                 return [...prevFeed, ...newFeeds];
             });
-            setPageParams((prev) => [...prev, page]);
-            setHasNextPage(data.item.pageable.pageNumber < data.item.totalPages);
+            // setPageParams((prev) => [...prev, page]);
+            setHasNextPage(data.item.page.number < data.item.page.totalPages);
 
             console.log("data", data);
         }catch(error){
@@ -64,7 +67,7 @@ function Feed() {
             // 반드시 요청이 완료되면 로딩 상태를 false로 설정
             setLoading(false);
         }
-    },[pageParams]);
+    },[activeTab]);
 
     // 중복된feedId를 가진 항목을 필터링
     const uniqueFeeds = feed.filter((feedItem, index, self) => 
@@ -87,9 +90,18 @@ function Feed() {
         }
     },[hasNextPage, loading]);
 
+    useEffect(() => {
+        setPage(0);
+        setFeed([]); // 피드 초기화
+        fetchFeed(0); // 첫 페이지 다시 불러오기
+    }, [activeTab, fetchFeed]);
+
+
     useEffect(()=>{
+        console.log("activeTab:", activeTab);
         fetchFeed(page);
-    },[page, fetchFeed])
+
+    }, [page, fetchFeed, activeTab]);
 
 
     // 슬라이드 점 네비게이션 클릭 시 동작
@@ -151,11 +163,107 @@ function Feed() {
         } else {
             return `Just now`;
         }
+    };
+
+    // 팔로우 처리 함수
+    const handleFollow = async (feedUserId) => {
+        console.log("Following user with ID:", feedUserId);
+        try {
+            const token = sessionStorage.getItem('ACCESS_TOKEN');
+
+            const response = await fetch(`/follows/follow`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId: feedUserId })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Follow successful", data);
+            } else {
+                console.error("Failed to follow user");
+            }
+        } catch (error) {
+            console.log("Error:", error);
+        }
+    };
+
+    // 언팔로우 처리 함수
+    const handleUnfollow = async (feedUserId) => {
+        console.log("Unfollowing user with ID:", feedUserId);
+        try {
+            const token = sessionStorage.getItem('ACCESS_TOKEN');
+
+            const response = await fetch(`/follow/unfollow/${feedUserId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Unfollow successful", data);
+            } else {
+                console.error("Failed to unfollow user");
+            }
+        } catch (error) {
+            console.log("Error:", error);
+        }
+    };
+
+
+
+    // 팔로우, 언팔로우 버튼 렌더링
+const renderFollowButton = (isFollowing, feedUserId) => {
+    if (isFollowing) {
+        return (
+            <button 
+                className="feed_unfollow_button" 
+                onClick={(event) => {
+                    event.stopPropagation(); // 이벤트 전파 방지
+                    handleUnfollow(feedUserId); // 언팔로우 함수 호출
+                }}
+            >
+                팔로잉
+            </button>
+        );
+    } else {
+        return (
+            <button 
+                className="feed_follow_button" 
+                onClick={(event) => {
+                    event.stopPropagation(); // 이벤트 전파 방지
+                    handleFollow(feedUserId); // 팔로우 함수 호출
+                }}
+            >
+                팔로우
+            </button>
+        );
     }
+};
+
+    useEffect(() => {
+        if (feed.length > 0) {
+            setCurrentIndexes(new Array(feed.length).fill(0)); // 각 게시물에 대해 슬라이드 인덱스를 0으로 초기화
+
+            // 애니메이션을 적용하기 위해 각 게시물에 클래스 추가
+            setTimeout(() => {
+                document.querySelectorAll('.feed_box').forEach((element, index) => {
+                    setTimeout(() => {
+                        element.classList.add('slide-in'); // 슬라이드 인 클래스를 추가
+                    }, index * 100); // 각 게시물마다 약간의 지연을 둡니다.
+                });
+            }, 100);
+        }
+    }, [feed]);
 
   return (
     <div className='feed_container'>
-        <Header />
+        <Header onSelectTab={(tab) => setActiveTab(tab)} activeTab={activeTab}/>
         <main className="feed_content_box">
             {uniqueFeeds && uniqueFeeds.length > 0 && uniqueFeeds.map((feedItem, feedIndex) => (
             <div key={feedItem.feedId} className="feed_box">
@@ -171,7 +279,8 @@ function Feed() {
                             <span>{timeAgo(feedItem.regdate)}</span>
                         </div>
                     </div>
-                    <button className="feed_follow_button">팔로우</button>
+                    {/* 팔로우,메시지 버튼을 조건부 렌더링 */}
+                    {renderFollowButton(feedItem.following, feedItem.userId)}
                 </div>
             
                 {/* <!-- 게시글 본문 --> */}
@@ -203,14 +312,16 @@ function Feed() {
 
                             {/* 점 네비게이션 */}
                             <div className="dots-container">
-                                {feedItem.feedFileDtoList.map((_, imageIndex) => (
-                                    <span 
-                                        key={`${feedItem.feedId}-${imageIndex}`}
-                                        className={`dot ${currentIndexes[feedIndex] === imageIndex ? 'active' : ''}`}
-                                        onClick={() => goToSlide(feedIndex, imageIndex)}
-                                    >
-                                    </span>
-                                ))}
+                                {feedItem.feedFileDtoList.map((_, imageIndex) => {
+                                    return (
+                                        <span 
+                                            key={`${feedItem.feedId}-${imageIndex}`}
+                                            className={`dot ${currentIndexes[feedIndex] === imageIndex ? 'active' : ''}`}
+                                            onClick={() => goToSlide(feedIndex, imageIndex)}
+                                        >
+                                        </span>
+                                    );
+                                })}
                             </div>
                         </div>
                     )}
@@ -241,7 +352,9 @@ function Feed() {
                 </div>
             </div>
             ))}
-            <h1 ref={observerRef} style={{ width: 0, height: 0, overflow: 'hidden' }}>{""}</h1>
+            <div className='spinner-container'>
+                <div ref={observerRef} className="spinner"></div>
+            </div>
         </main>
         <Footer profileImage={profileImage}/>
     </div>
