@@ -11,7 +11,7 @@ import JoinTelVer from './pages/JoinTelVer';
 import FindCodeVer from './pages/FindCodeVer';
 import FindTelInput from './pages/FindTelInput';
 import ResetPw from './pages/ResetPw';
-import Feed from './pages/Feed';
+import Feed from './pages/feed/Feed';
 
 function App() {
 

@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     width: 600px;
-    height: 140px; /* 헤더 높이 조정 */
+    height: 80px; /* 헤더 높이 조정 */
     background-color: white; /* 원하는 색상 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-sizing: border-box; /* 크기에 border와 padding을 포함 */
@@ -20,7 +20,7 @@
 }
 
 .header_title{
-    height: 80px;
+    height: 70px;
     font-weight: bold;
     font-size: 36px;
     margin: 0;
@@ -28,8 +28,8 @@
     align-items: center;
 }
 
-.header_icons{
-    width: 85px;
+.header_option{
+    width: 340px;
     height: 70px;
     display: flex;
     justify-content: space-between;
@@ -48,6 +48,16 @@
     width: 600px;
     display: flex;
     justify-content: flex-start;
+}
+
+.header_input{
+    height: 30px;
+    width: 250px;
+    padding: 2px 15px;
+    font-size: 18px;
+    background-color: #f1f3f5;
+    border: 1px solid #f1f3f5;
+    border-radius: 5px;
 }
 
 .first_tab,
@@ -72,31 +82,3 @@
         border-bottom-color: darkgray;
       }
 }
-
-// .first_tab{
-//     height: 60px;
-//     width: 90px;
-//     padding: 0px;
-//     font-size: 20px;
-//     border: none;
-//     border-bottom: 2px solid black;
-//     background: transparent;
-//     cursor: pointer;
-// }
-
-// .second_tab{
-//     color: lightgray;
-//     height: 60px;
-//     width: 90px;
-//     padding: 0px;
-//     font-size: 20px;
-//     border: none;
-//     border-bottom: 2px solid lightgray;
-//     background: transparent;
-//     cursor: pointer;
-
-//     &:hover{
-//         color: darkgray;
-//         border-bottom-color: darkgray;
-//     }
-// }
