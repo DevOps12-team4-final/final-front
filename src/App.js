@@ -12,6 +12,7 @@ import FindCodeVer from './pages/FindCodeVer';
 import FindTelInput from './pages/FindTelInput';
 import ResetPw from './pages/ResetPw';
 import Feed from './pages/feed/Feed';
+import MyPage from './pages/MyPage';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/findcodever" element={<FindCodeVer />} />
           <Route path="/resetpw" element={<ResetPw />} />
           <Route path="/feed" element={<Feed />} />
+          <Route path="/MyPage" element={<MyPage />} />
         </Routes>
       </Router>
     </Provider>

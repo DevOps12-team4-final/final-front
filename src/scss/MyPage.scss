@@ -1,0 +1,64 @@
+.whole-section {
+    width: 600px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1),
+                -4px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+// 마이페이지 부모
+.mypage-header {
+    text-align: center;
+    width: 62.5vh;
+    height: 20ch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // justify-content: center;
+
+}
+
+.user-image {
+    background-color:rgb(241, 14, 14);
+    width: 15ch;
+    height: 20ch;
+}
+
+.user-information-frame {
+    display: inline;
+}
+.user-information {
+    background-color: rgb(235, 167, 9);
+    width: 47vh;
+    height: 6ch;
+}
+
+.user-nickname {
+    background-color: antiquewhite;
+}
+
+.user-follower-cnt {
+    background-color: rgb(254, 238, 11);
+    width: 47vh;
+    height: 6ch;
+}
+
+.user-comment {
+    background-color: rgb(22, 217, 32);
+    width: 47vh;
+    height: 8.5vh;
+}
+
+.mypage-bar {
+    width: 62.5vh;
+    height: 61px;
+    background-color: bisque;
+}
+
+.bar-content-frame {
+    width: 62.5vh;
+    height: 20vh;
+    background-color: blanchedalmond;
+}
