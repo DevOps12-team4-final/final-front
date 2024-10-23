@@ -7,16 +7,11 @@ function Header({onSelectTab, activeTab}) {
     <header className="header">
         <div className="header_title_box">
             <p className='header_title'>Logo</p>
-            <div className="header_icons">
+            <div className="header_option">
+            <input className="header_input" placeholder='검색'></input>
                 <button className="material-icons">notifications</button>
-                <button className="material-icons">search</button>
+                {/* <button className="material-icons">search</button> */}
             </div>
-        </div>
-        <div className="header_tab">
-            <button className={`first_tab ${activeTab === 'latest' ? 'active' : ''}`}
-                    onClick={() => onSelectTab('latest')}>최신</button>
-            <button className={`second_tab ${activeTab === 'following' ? 'active' : ''}`}
-                    onClick={() => onSelectTab('following')}>팔로잉</button>
         </div>
     </header>
   );
