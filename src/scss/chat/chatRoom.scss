@@ -1,0 +1,186 @@
+$padding: 1rem;
+$small-font: 0.55rem;
+$base-font: 1rem;
+$primary-color: #007bff;
+$border-radius: 0.5rem;
+$border-color: #ccc;
+$text-color-light: #999;
+
+// Mixin for flex alignment
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+
+  // Chat Area
+  .chat-area {
+    margin-top: 9rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 85vh;
+    padding: $padding;
+  
+    .chat-list {
+      flex: 1;
+      overflow-y: auto;
+    }
+  }
+
+
+//chat date-separator
+  .date-separator {
+    text-align: center;
+    margin: 1rem 0;
+    font-weight: bold;
+    color: #888;
+}
+
+ // Chat Item
+ .chat-item {
+  @include flex-center;
+  margin-bottom: $padding;
+  &.sent {
+    justify-content: flex-end;
+    margin-right: 1rem;
+    .chat-content {
+      background-color: #0084ff;
+      border: #010101 1px solid;
+      color: white;
+      
+    }
+    .profile-image {
+      display: none;
+    }
+  }
+  
+  &.received {
+    justify-content: flex-start;
+    .chat-content {
+      order: 2;
+      background-color: #f1f0f0;
+      border:  #010101 1px solid;
+      color: black;
+    }
+    .profile-image {
+      order: 1; // Move profile image to the right for sent messages
+    }
+    .hidden{
+      visibility: hidden; 
+    }
+
+  }
+  
+
+  .profile-image {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-right: $padding;
+  }
+
+  .chat-content {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    border-radius: 16px 16px 16px 16px;
+    .chat-user {
+      font-weight: bold;
+    }
+
+    .chat-message {
+      padding: 0.75rem;
+      font-size: $base-font;
+    }
+
+    .chat-img{
+       min-width: 7.5rem;
+       min-height: 7.5rem;
+       max-width: 15rem;
+       max-height: 15rem;
+       border-radius: 16px 16px 16px 16px;
+    }
+
+    .chat-date {
+      font-size: $small-font;
+      color: $text-color-light;
+    }
+  }
+}
+
+
+
+
+// Chat Input
+.chat-input-form {
+  @include flex-center;
+  padding: 0.5rem;
+  border-top: 1px solid $border-color;
+  position: fixed;
+  bottom: 0;
+
+  .chat-input {
+    flex: 1;
+    padding: 0.5rem;
+    width: 16rem;
+    font-size: $base-font;
+    border: none;
+    border-radius: $border-radius;
+    margin-right: $padding;
+  }
+
+  .file-upload-label {
+    cursor: pointer;
+    font-size: 1.5rem; /* Adjust the size of the attachment icon */
+    margin-right: 0.5rem;
+  }
+
+  .send-button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+}
+
+
+
+
+
+.sidebar {
+  position: fixed;
+  left: -250px; // Hidden by default
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #333;
+  color: white;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  .open {
+    left: 0; // Slide in
+  }
+}
+
+
+.sidebar-content {
+  padding: 1rem;
+}
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+  padding: 0.5rem 1rem;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  cursor: pointer;
+  &hover {
+    background-color: #005f75;
+  }
+}
