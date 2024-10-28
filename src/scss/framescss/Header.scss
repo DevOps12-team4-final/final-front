@@ -1,7 +1,7 @@
 .header{
     position: fixed;
     top: 0;
-    width: 600px;
+    width: 375px;
     height: 80px; /* 헤더 높이 조정 */
     background-color: white; /* 원하는 색상 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -14,13 +14,13 @@
 }
 
 .header_title_box{
-    width: 560px;
+    width: 335px;
     display: flex;
     justify-content: space-between;
 }
 
 .header_title{
-    height: 70px;
+    height: 40px;
     font-weight: bold;
     font-size: 36px;
     margin: 0;
@@ -29,8 +29,8 @@
 }
 
 .header_option{
-    width: 340px;
-    height: 70px;
+    width: 200px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,14 +45,14 @@
 }
 
 .header_tab{
-    width: 600px;
+    width: 255px;
     display: flex;
     justify-content: flex-start;
 }
 
 .header_input{
-    height: 30px;
-    width: 250px;
+    height: 25px;
+    width: 120px;
     padding: 2px 15px;
     font-size: 18px;
     background-color: #f1f3f5;
@@ -60,25 +60,25 @@
     border-radius: 5px;
 }
 
-.first_tab,
-.second_tab{
-    height: 60px;
-    width: 90px;
-    padding: 0px;
-    font-size: 20px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    color: lightgray;
-    border-bottom: 2px solid lightgray;
+// .first_tab,
+// .second_tab{
+//     height: 60px;
+//     width: 90px;
+//     padding: 0px;
+//     font-size: 20px;
+//     border: none;
+//     background: transparent;
+//     cursor: pointer;
+//     color: lightgray;
+//     border-bottom: 2px solid lightgray;
 
-    &.active{
-        color: black;
-        border-bottom-color: black;
-    }
+//     &.active{
+//         color: black;
+//         border-bottom-color: black;
+//     }
 
-    &:not(.active):hover { // 비활성화된 상태에서의 hover 스타일
-        color: darkgray;
-        border-bottom-color: darkgray;
-      }
-}
+//     &:not(.active):hover { // 비활성화된 상태에서의 hover 스타일
+//         color: darkgray;
+//         border-bottom-color: darkgray;
+//       }
+// }
