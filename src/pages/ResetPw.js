@@ -187,46 +187,48 @@ function ResetPw() {
 	};
 
   return (
-    <form className="rp_container" onSubmit={handleResetPw}>
-        <div className="rp_logo">
-            <p>Logo</p>
-        </div>
-        <div className="rp_text1">
-            이메일 주소 확인
-        </div>
-        <div className="rp_text2">
-            {userForm.email}
-        </div>
-        <div className="rp_pwBox">
-				<input 
-					type="password" 
-					name="password"
-					placeholder={passwordState.placeHolder}
-					value={userForm.password}
-					onChange={changeTextField}
-					onBlur={handleBlur}
-					className={passwordState.error ? 'rp_pw_error' : 'rp_pw'}
-				/>
+	<div id='rp_body'>
+		<form className="rp_container" onSubmit={handleResetPw}>
+			<div className="rp_logo">
+				<p>Logo</p>
 			</div>
-			<div className="rp_pwChkBox">
-				<input 
-					type="password" 
-					name="passwordCheck"
-					placeholder={passwordChkState.placeHolder}
-					value={userForm.passwordCheck}
-					onChange={changeTextField}
-					onBlur={handleBlur}
-					className={passwordChkState.error ? 'rp_pwChk_error' : 'rp_pwChk'}
-				/>
+			<div className="rp_text1">
+				이메일 주소 확인
 			</div>
-        <button type="submit" className="rp_next">변경</button>
-        <div class="divider">
-            <hr class="left" />
-                <span>또는</span>
-            <hr class="right" />
-        </div>
-        <button type="button" className="rp_back_login" onClick={handleLogin}>로그인 페이지로 이동</button>
-      </form> 
+			<div className="rp_text2">
+				{userForm.email}
+			</div>
+			<div className="rp_pwBox">
+					<input 
+						type="password" 
+						name="password"
+						placeholder={passwordState.placeHolder}
+						value={userForm.password}
+						onChange={changeTextField}
+						onBlur={handleBlur}
+						className={passwordState.error ? 'rp_pw_error' : 'rp_pw'}
+					/>
+				</div>
+				<div className="rp_pwChkBox">
+					<input 
+						type="password" 
+						name="passwordCheck"
+						placeholder={passwordChkState.placeHolder}
+						value={userForm.passwordCheck}
+						onChange={changeTextField}
+						onBlur={handleBlur}
+						className={passwordChkState.error ? 'rp_pwChk_error' : 'rp_pwChk'}
+					/>
+				</div>
+			<button type="submit" className="rp_next">변경</button>
+			<div class="divider">
+				<hr class="left" />
+					<span>또는</span>
+				<hr class="right" />
+			</div>
+			<button type="button" className="rp_back_login" onClick={handleLogin}>로그인 페이지로 이동</button>
+		</form> 
+	  </div>
   )
 }
 
