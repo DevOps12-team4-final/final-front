@@ -3,7 +3,11 @@
     bottom: 0;
     width: 600px;
     height: 80px; /* 푸터 높이 조정 */
+<<<<<<< HEAD
     background-color: black; /* 원하는 색상 */
+=======
+    background-color: rgb(0, 0, 0); /* 원하는 색상 */
+>>>>>>> origin/feature/mypage
     border-top: 2px solid black; /* 상단 테두리 */
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2); /* 위쪽 그림자 */
     box-sizing: border-box;
@@ -33,12 +37,20 @@
     justify-content: center;
     background-color: transparent; // 배경 투명
     border: none; 
+<<<<<<< HEAD
     color: #a9a9a9; 
+=======
+    color: white; 
+>>>>>>> origin/feature/mypage
     font-size: 14px;
     cursor: pointer; 
 
     i {
+<<<<<<< HEAD
         font-size: 26px;
+=======
+        font-size: 32px;
+>>>>>>> origin/feature/mypage
     }
 
     span {
@@ -47,11 +59,19 @@
     }
 
     &:hover {
+<<<<<<< HEAD
         color: #99ff99;
         font-weight: bold;
 
         .footer_profile {
             border-color: #99ff99; // hover 시 테두리 흰색으로 변경
+=======
+        color: rgb(255, 180, 180);
+        font-weight: bold;
+
+        .footer_profile {
+            border-color: rgb(255, 180, 180); // hover 시 테두리 흰색으로 변경
+>>>>>>> origin/feature/mypage
         }
     }
 }
@@ -59,7 +79,11 @@
 .footer_profile {
     width: 32px;
     height: 32px;
+<<<<<<< HEAD
     border: 2px solid #a9a9a9; 
+=======
+    border: 2px solid white; 
+>>>>>>> origin/feature/mypage
     border-radius: 50%;
     object-fit: cover;
     transition: border-color 0.01s ease; // 부드러운 전환 효과
