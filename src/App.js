@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom'; 
@@ -15,22 +14,7 @@ import Join from './pages/sign/Join';
 import useAlarmWebSocket from './components/frame/useAlarmWebSocket';
 import AlarmList from './pages/alarm/AlarmList'
 
-function App() {
-  const persiststore = persistStore(store);
-  // WebSocket을 연결하기 위한 URL을 설정합니다.
-  return (
-    <Provider store={store}>
-      <PersistGate loading={<div>Loading...</div>} persistor={persiststore}>
-        <Routes>
-          <Route path="/" element={<Login />} />
-            <Route path="/join" element={<Join />} />
-            <Route path="/chatBoard" element={<ChatBoard />} />  
-            <Route path="/chatRoomSetting" element={<ChatRoomSetting />} />
-            <Route path="/chatRoom/:roomId" element={<Chat />} />
-            <Route path="/alarm" element={<AlarmList />} />
-        </Routes>
-      </PersistGate>
-=======
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import "slick-carousel/slick/slick.css"; 
@@ -46,6 +30,8 @@ import FindTelInput from './pages/FindTelInput';
 import ResetPw from './pages/ResetPw';
 import Feed from './pages/feed/Feed';
 import MyPage from './pages/MyPage';
+import Feed from './pages/followingfeed/Feed';
+import FeedGrid from './pages/latesetfeed/FeedGrid';
 
 function App() {
 
@@ -63,15 +49,13 @@ function App() {
           <Route path="/resetpw" element={<ResetPw />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/MyPage" element={<MyPage />} />
+          <Route path="/feedgrid" element={<FeedGrid />} />
         </Routes>
       </Router>
->>>>>>> origin/feature/mypage
     </Provider>
   );
 }
 
-<<<<<<< HEAD
+
 export default App;
-=======
-export default App;
->>>>>>> origin/feature/mypage
+

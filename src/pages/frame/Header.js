@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../scss/framescss/Header.scss';  // 정확한 경로로 수정
-function Header({onSelectTab, activeTab}) {
+function Header() {
 
 
   return (
