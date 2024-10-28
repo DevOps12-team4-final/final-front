@@ -79,30 +79,32 @@ const handleLogin = () => {
 
 
   return (
-    <form className="fu_auth_container" onSubmit={handleVerification}>
-        <div className="fu_auth_logo">
-            <p>Logo</p>
-        </div>
-        <div className="fu_auth_text">{`${userForm.tel}로 전송된 6자리 코드를 입력하세요`}</div>
-        <div className="fu_auth_chkNumBox">
-          <input 
-            type="text" 
-            name="chkNum"
-            placeholder='인증번호'
-            value={inputCode}
-            onChange={handleChange}
-            className="fu_auth_chkNum"
-          />
-        </div>
-        <button type="submit" className="fu_auth_next">다음</button>
-        <button type='button' className="fu_auth_newCode" onClick={handleResendCode}>새 코드 요청하기</button>
-        <div class="divider">
-            <hr class="left" />
-                <span>또는</span>
-            <hr class="right" />
-        </div>
-        <button type="button" className="fu_auth_back" onClick={handleLogin}>로그인 페이지로 이동</button>
-      </form> 
+    <div id='fu_auth_body'>
+        <form className="fu_auth_container" onSubmit={handleVerification}>
+            <div className="fu_auth_logo">
+                <p>Logo</p>
+            </div>
+            <div className="fu_auth_text">{`${userForm.tel}로 전송된 6자리 코드를 입력하세요`}</div>
+            <div className="fu_auth_chkNumBox">
+            <input 
+                type="text" 
+                name="chkNum"
+                placeholder='인증번호'
+                value={inputCode}
+                onChange={handleChange}
+                className="fu_auth_chkNum"
+            />
+            </div>
+            <button type="submit" className="fu_auth_next">다음</button>
+            <button type='button' className="fu_auth_newCode" onClick={handleResendCode}>새 코드 요청하기</button>
+            <div class="divider">
+                <hr class="left" />
+                    <span>또는</span>
+                <hr class="right" />
+            </div>
+            <button type="button" className="fu_auth_back" onClick={handleLogin}>로그인 페이지로 이동</button>
+        </form> 
+      </div>
   )
 }
 

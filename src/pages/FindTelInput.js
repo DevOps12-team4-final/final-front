@@ -165,30 +165,32 @@ function FindTelInput() {
 	};
 
   return (
-    <form className="fti_container" onSubmit={handeTelVer}>
-        <div className="fti_logo">
-            <p>Logo</p>
-        </div>
-        <div className="fti_text">가입시 등록한 번호를 입력하세요 </div>
-        <div className="fti_chkNumBox">
-          <input 
-            type="text" 
-            name="tel"
-            placeholder={telState.placeHolder}
-            value={userForm.tel}
-            onChange={changeTextField}
-            onBlur={handleBlur}
-            className={telState.error ? 'fti_tel_error' : 'fti_tel'}
-          />
-        </div>
-        <button type="submit" className="fti_next">다음</button>
-        <div class="divider">
-            <hr class="left" />
-                <span>또는</span>
-            <hr class="right" />
-        </div>
-        <button type="button" className="fti_back_login" onClick={handleLogin}>로그인 페이지로 이동</button>
-      </form> 
+	<div id='fti_body'>
+		<form className="fti_container" onSubmit={handeTelVer}>
+			<div className="fti_logo">
+				<p>Logo</p>
+			</div>
+			<div className="fti_text">가입시 등록한 번호를 입력하세요 </div>
+			<div className="fti_chkNumBox">
+			<input 
+				type="text" 
+				name="tel"
+				placeholder={telState.placeHolder}
+				value={userForm.tel}
+				onChange={changeTextField}
+				onBlur={handleBlur}
+				className={telState.error ? 'fti_tel_error' : 'fti_tel'}
+			/>
+			</div>
+			<button type="submit" className="fti_next">다음</button>
+			<div class="divider">
+				<hr class="left" />
+					<span>또는</span>
+				<hr class="right" />
+			</div>
+			<button type="button" className="fti_back_login" onClick={handleLogin}>로그인 페이지로 이동</button>
+		</form> 
+	  </div>
   )
 }
 
