@@ -13,7 +13,7 @@ const ChatBoard = () => {
   const [livePage, setLivePage] = useState(0); // 현재 페이지 번호
   const [hasMore, setHasMore] = useState(true); // 더 가져올 데이터가 있는지 여부
   const serverUrl = "http://localhost:9090/room";
-  useAlarmWebSocket()
+  //useAlarmWebSocket()
   
   useEffect(() => {
     fetchData(page); // 초기 데이터 로드
@@ -25,7 +25,7 @@ const ChatBoard = () => {
     try {
       const res = await axios.get(`${serverUrl}?page=${pageNumber}`, {
         headers: {
-          Authorization: `Bearer ${sessionStorage.getItem('ACCESS_TOKEN')}`,
+          // Authorization: `Bearer ${sessionStorage.getItem('ACCESS_TOKEN')}`,
         }
       });
       console.log(res)
