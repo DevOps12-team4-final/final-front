@@ -1,11 +1,10 @@
-body {
+#login_body{
     width: 375px;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    min-height: 100vh; // 브라우저 창의 높이를 기준으로 최소 높이 설정
+    min-height: 100vh; // 브라우저 창의
 }
   
 .login_container {

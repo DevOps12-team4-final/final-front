@@ -58,6 +58,7 @@ function Login() {
 
 
   return (
+    <div id='login_body'>
     <form onSubmit={handleLogin} className='login_container'>
         <div className="login_logo">
             <p>Logo</p>
@@ -93,6 +94,7 @@ function Login() {
         </div>
         <button type="button" onClick={handleJoin} className='login_joinBtn'>새 계정 만들기</button>
     </form>
+    </div>
   )
 }
 

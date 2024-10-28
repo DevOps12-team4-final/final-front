@@ -1,15 +1,27 @@
 import React from 'react'
 import '../../scss/framescss/Footer.scss';
+import { useNavigate } from 'react-router-dom';
 
 function Footer({profileImage}) {
+
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    navigate('/feed');
+  };
+
+  const handleSearchClick = () => {
+    navigate('/feedgrid');
+  };
+
   return (
     <footer className="footer">
       <nav>
         <div className="footer_box">
-            <button className="icon_button">
+            <button className="icon_button" onClick={handleHomeClick}>
                 <i className="material-icons">home</i>
             </button>
-            <button className="icon_button">
+            <button className="icon_button" onClick={handleSearchClick}>
                 <i className="material-icons">search</i>
             </button>
             <button className="icon_button">

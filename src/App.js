@@ -11,7 +11,8 @@ import JoinTelVer from './pages/JoinTelVer';
 import FindCodeVer from './pages/FindCodeVer';
 import FindTelInput from './pages/FindTelInput';
 import ResetPw from './pages/ResetPw';
-import Feed from './pages/feed/Feed';
+import Feed from './pages/followingfeed/Feed';
+import FeedGrid from './pages/latesetfeed/FeedGrid';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/findcodever" element={<FindCodeVer />} />
           <Route path="/resetpw" element={<ResetPw />} />
           <Route path="/feed" element={<Feed />} />
+          <Route path="/feedgrid" element={<FeedGrid />} />
         </Routes>
       </Router>
     </Provider>

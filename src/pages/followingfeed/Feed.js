@@ -4,6 +4,8 @@ import Header from '../frame/Header';
 import Footer from '../frame/Footer';
 import '../../scss/Feed.scss';
 import FeedHeader from './FeedHeader';
+import FeedContent from './FeedContent';
+import FeedFooter from './FeedFooter';
 
 function Feed() {
 
@@ -91,7 +93,6 @@ function Feed() {
         fetchFeed(page);
     }, [page, fetchFeed]);
 
-
     // 슬라이드 점 네비게이션 클릭 시 동작
     const goToSlide = (feedIndex, imageIndex) => {
         // 기존 인덱스 복사
@@ -101,7 +102,6 @@ function Feed() {
         // 새로운 인덱스 배열로 상태 업데이트
         setCurrentIndexes(newIndexes);
     };
-
 
     // 마우스 이벤트 핸들러
     const handleMouseDown = (e, feedIndex) => {
@@ -146,94 +146,41 @@ function Feed() {
     }, [feed]);
 
   return (
-    <div className='feed_container'>
-        <Header />
-        <main className="feed_content_box">
-            {uniqueFeeds && uniqueFeeds.length > 0 && uniqueFeeds.map((feedItem, feedIndex) => (
-            <div key={feedItem.feedId} className="feed_box">
-                <FeedHeader 
-                    profileImage={`${baseURL}${feedItem.profileImage}`}
-                    nickname={feedItem.nickname}
-                    regdate={feedItem.regdate}
-                />     
-            
-                {/* <!-- 게시글 본문 --> */}
-                <div className="feed_content">
-                    <p>{feedItem.content}</p>
+    <div id='feed'>
+        <div className='feed_container'>
+            <Header />
+            <main className="feed_content_box">
+                {uniqueFeeds && uniqueFeeds.length > 0 && uniqueFeeds.map((feedItem, feedIndex) => (
+                <div key={feedItem.feedId} className="feed_box">
+                    <FeedHeader 
+                        profileImage={`${baseURL}${feedItem.profileImage}`}
+                        nickname={feedItem.nickname}
+                        regdate={feedItem.regdate}
+                    />     
 
-                    {/* 캐러셀 구현 */}
-                    {feedItem.feedFileDtoList?.length > 0 && (
-                        <div className="carousel"
-                        onMouseDown={(e) => handleMouseDown(e, feedIndex)} // 현재 인덱스 전달
-                            onMouseMove={handleMouseMove}
-                            onMouseUp={handleMouseUp}
-                            style={{ cursor: isDragging ? 'grabbing' : 'grab' }}>
-                            <div className="carousel-inner" style={{
-                                display: 'flex',
-                                transition: 'transform 0.5s ease-in-out',
-                                transform: `translateX(-${currentIndexes[feedIndex] * 600}px)`,
-                                width: `${feedItem.feedFileDtoList.length * 600}px`
-                            }}>
-                            {feedItem.feedFileDtoList.map((file) => (
-                                <img
-                                    key={file.feedFileId}
-                                    src={`${baseURL}${file.filepath}${file.newfilename}`}
-                                    alt={`게시물 이미지 ${file.feedFileId}`}
-                                    style={{ width: '600px', height: '600px',}} // 이미지 크기 설정
-                                />
-                            ))}
-                        </div>
-
-                            {/* 점 네비게이션 */}
-                            <div className="dots-container">
-                                {feedItem.feedFileDtoList.map((_, imageIndex) => {
-                                    return (
-                                        <span 
-                                            key={`${feedItem.feedId}-${imageIndex}`}
-                                            className={`dot ${currentIndexes[feedIndex] === imageIndex ? 'active' : ''}`}
-                                            onClick={() => goToSlide(feedIndex, imageIndex)}
-                                        >
-                                        </span>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    )}
+                    <FeedContent 
+                        content={feedItem.content}
+                        feedFileDtoList={feedItem.feedFileDtoList}
+                        currentIndex={currentIndexes[feedIndex]}
+                        onMouseDown={(e) => handleMouseDown(e, feedIndex)}
+                        onMouseMove={handleMouseMove}
+                        onMouseUp={handleMouseUp}
+                        goToSlide={(imageIndex) => goToSlide(feedIndex, imageIndex)}
+                        isDragging={isDragging}
+                    />
+                
+                    <FeedFooter feedId={feedItem.feedId} initialLikeCount={feedItem.likeCount} />
                 </div>
-            
-                {/* <!-- 게시글 푸터 --> */}
-                <div className="feed_footer">
-                    <p>회원님 외 {feedItem.likeCount}명이 응원중입니다.</p>
-                    <span>댓글 0</span>
-                </div>
-
-                {/* <!-- 게시글 액션 --> */}
-                <div className="feed_actions">
-                  <div>
-                    <span className="material-symbols-outlined">
-                        cheer
-                    </span>
-                    <span>응원</span>
-                  </div>
-                  <div>
-                    <i className="material-icons">chat_bubble_outline</i>
-                    <span>댓글</span>
-                  </div>
-                  <div>
-                    <i className="material-icons">fitness_center</i>
-                    <span>운동</span>
-                  </div>
-                </div>
-            </div>
-            ))}
-            {/* 삼항 연산자로 spinner를 조건부 렌더링 */}
-            {hasNextPage ? (
-                <div className='spinner-container'>
-                    <div ref={observerRef} className="spinner"></div>
-                </div>
-            ) : null}
-        </main>
-        <Footer profileImage={profileImage}/>
+                ))}
+                {/* 삼항 연산자로 spinner를 조건부 렌더링 */}
+                {hasNextPage ? (
+                    <div className='spinner-container'>
+                        <div ref={observerRef} className="spinner"></div>
+                    </div>
+                ) : null}
+            </main>
+            <Footer profileImage={profileImage}/>
+        </div>
     </div>
   )
 }
