@@ -1,0 +1,102 @@
+.header{
+    position: fixed;
+    top: 0;
+    width: 600px;
+    height: 140px; /* 헤더 높이 조정 */
+    background-color: white; /* 원하는 색상 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* 크기에 border와 padding을 포함 */
+    z-index: 1000; /* 다른 요소들보다 위에 오도록 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header_title_box{
+    width: 560px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_title{
+    height: 80px;
+    font-weight: bold;
+    font-size: 36px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header_icons{
+    width: 85px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.material-icons{
+    font-size: 36px;
+    border: none; 
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.header_tab{
+    width: 600px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.first_tab,
+.second_tab{
+    height: 60px;
+    width: 90px;
+    padding: 0px;
+    font-size: 20px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: lightgray;
+    border-bottom: 2px solid lightgray;
+
+    &.active{
+        color: black;
+        border-bottom-color: black;
+    }
+
+    &:not(.active):hover { // 비활성화된 상태에서의 hover 스타일
+        color: darkgray;
+        border-bottom-color: darkgray;
+      }
+}
+
+// .first_tab{
+//     height: 60px;
+//     width: 90px;
+//     padding: 0px;
+//     font-size: 20px;
+//     border: none;
+//     border-bottom: 2px solid black;
+//     background: transparent;
+//     cursor: pointer;
+// }
+
+// .second_tab{
+//     color: lightgray;
+//     height: 60px;
+//     width: 90px;
+//     padding: 0px;
+//     font-size: 20px;
+//     border: none;
+//     border-bottom: 2px solid lightgray;
+//     background: transparent;
+//     cursor: pointer;
+
+//     &:hover{
+//         color: darkgray;
+//         border-bottom-color: darkgray;
+//     }
+// }
