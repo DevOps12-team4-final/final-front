@@ -1,12 +1,8 @@
 .header{
     position: fixed;
     top: 0;
-    width: 600px;
-<<<<<<< HEAD
-    height: 140px; /* 헤더 높이 조정 */
-=======
+    width: 100%;
     height: 80px; /* 헤더 높이 조정 */
->>>>>>> origin/feature/mypage
     background-color: white; /* 원하는 색상 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-sizing: border-box; /* 크기에 border와 padding을 포함 */
@@ -18,17 +14,13 @@
 }
 
 .header_title_box{
-    width: 560px;
+    width: auto;
     display: flex;
     justify-content: space-between;
 }
 
 .header_title{
-<<<<<<< HEAD
-    height: 80px;
-=======
     height: 70px;
->>>>>>> origin/feature/mypage
     font-weight: bold;
     font-size: 36px;
     margin: 0;
@@ -36,17 +28,13 @@
     align-items: center;
 }
 
-<<<<<<< HEAD
-.header_icons{
-    width: 85px;
-=======
 .header_option{
-    width: 340px;
->>>>>>> origin/feature/mypage
+    width: auto;
     height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 3%;
 }
 
 .material-icons{
@@ -63,11 +51,9 @@
     justify-content: flex-start;
 }
 
-<<<<<<< HEAD
-=======
 .header_input{
     height: 30px;
-    width: 250px;
+    width: 60%;
     padding: 2px 15px;
     font-size: 18px;
     background-color: #f1f3f5;
@@ -75,7 +61,6 @@
     border-radius: 5px;
 }
 
->>>>>>> origin/feature/mypage
 .first_tab,
 .second_tab{
     height: 60px;
@@ -97,7 +82,6 @@
         color: darkgray;
         border-bottom-color: darkgray;
       }
-<<<<<<< HEAD
 }
 
 // .first_tab{
@@ -127,6 +111,3 @@
 //         border-bottom-color: darkgray;
 //     }
 // }
-=======
-}
->>>>>>> origin/feature/mypage

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e5a7fe2-ebf9-4d2b-9551-59676af58d2b" name="변경" comment="" />
+    <list default="true" id="6e5a7fe2-ebf9-4d2b-9551-59676af58d2b" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,6 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1730076128455</updated>
       <workItem from="1730076129499" duration="372000" />
+      <workItem from="1730083152702" duration="1239000" />
     </task>
     <servers />
   </component>

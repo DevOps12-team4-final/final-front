@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../apis/userApis';
+import { logout } from '../../apis/userApis';
 
 function Logout() {
 

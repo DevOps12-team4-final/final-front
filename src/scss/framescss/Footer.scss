@@ -20,7 +20,7 @@
 }
 
 .footer_box{
-    width: 570px;
+    width: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -54,7 +54,7 @@
         font-size: 14px;
     }
 
-    &:hover {
+    :hover {
         color: rgb(255, 180, 180);
         font-weight: bold;
 

@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { join } from '../apis/userApis';
-import '../scss/JoinTelVer.scss';
+import { join } from '../../apis/userApis';
+import '../../apis/userApis';
 
 function JoinTelVer() {
 
