@@ -28,7 +28,7 @@ const Chat = () => {
     const loginUserId =  1// useSelector(state => state.memberSlice.id);
     const [messages,setMessage] = useState([]);
     const[isSideOpen,setIsSideOpen] = useState([]);
-    //useAlarmWebSocket()
+    useAlarmWebSocket()
 
     useEffect(()=>{
         //방 입장
