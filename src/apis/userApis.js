@@ -74,7 +74,6 @@ export const getMyPage = createAsyncThunk(
     try {
       const response = await axios.get("/users/my_page", user);
 
-      // console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkApi.rejectWithValue(e);

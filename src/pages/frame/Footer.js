@@ -21,8 +21,9 @@ function Footer({profileImage}) {
     const handlechat = () => {
     navigate('/chat');
   };
-  const handlemypage = () => {
-    navigate('/MyPage');
+  
+  const handleMyPageClick = () => {
+    navigate('/mypage');
   };
 
   return (
@@ -41,7 +42,7 @@ function Footer({profileImage}) {
             <button className="icon_button" onClick={handlechat}>
                 <i className="material-icons">chat</i>
             </button>
-            <button className="icon_button" onClick={handlemypage}>
+            <button className="icon_button" onClick={handleMyPageClick}>
                 <img src={profileImage} alt="프로필" className='footer_profile'/>
             </button>
         </div>

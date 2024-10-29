@@ -1,47 +1,29 @@
 .whole-section {
-    width: 375px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    min-height: 100vh; // 브라우저 창의 높이를 기준으로 최소 높이 설정
-}
-
-.content {
-    width: 375px;
+    width: 600px;
     height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    // overflow: hidden;
-    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1),  /* 오른쪽 그림자 */
-                -4px 0 6px rgba(0, 0, 0, 0.1);  /* 왼쪽 그림자 */
-}
-.mypage-frame{
-    flex: 1;
-    margin-top: 80px; /* 헤더 높이만큼 아래에 여백 추가 */
-    margin-bottom: 80px; /* 푸터 높이만큼 아래에 여백 추가 */
-    overflow-y: auto; /* 스크롤 가능하도록 설정 */
-    background-color: #f5f5f5; /* 원하는 배경색 */
-    width: 375px;
-    box-sizing: border-box;
-    // height: auto; /* 고정 높이를 없애거나 auto로 설정 */
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1),
+                -4px 0 6px rgba(0, 0, 0, 0.1);
 }
 
 // 마이페이지 부모
 .mypage-header {
-    max-width: 100%;
-    max-height: 100%;
     text-align: center;
+    width: 62.5vh;
+    height: 20ch;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    // justify-content: center;
+
 }
 
 .user-image-section {
     background-color: rgb(122, 81, 209);
-    width: 10ch;
-    height: 12ch;
+    width: 15ch;
+    height: 20ch;
 }
 
 // 닉네임, 프로필편집, 자기소개, 팔로우 팔로잉 등등 //
@@ -51,12 +33,12 @@
 }
 .user-information {
     background-color: rgb(235, 167, 9);
-    width: 20vh;
+    width: 47vh;
     height: 6ch;
 }
 .user-nickname {
     background-color: rgb(122, 81, 209);
-    width: 9ch;
+    width: 20ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
@@ -64,7 +46,7 @@
 }
 .profile-edit {
     background-color: rgb(224, 224, 224);
-    width: 9ch;
+    width: 16ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
@@ -81,58 +63,60 @@
 
 .user-follower-cnt {
     background-color: rgb(254, 238, 11);
-    width: 20vh;
-    height: 5ch;
+    width: 47vh;
+    height: 6ch;
 }
-
+.feed-cnt {
+    background-color: rgb(122, 81, 209);
+    width: 13ch;
+    height: 5ch;
+    display: inline-block;
+    margin-right: 1ch;
+}
 .follower-cnt{
     background-color: rgb(122, 81, 209);
-    width: 9ch;
+    width: 13ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
 }
 .following-cnt{
     background-color: rgb(122, 81, 209);
-    width: 9ch;
+    width: 13ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
 }
-
-
 .user-comment {
     background-color: rgb(122, 81, 209);
-    width: 28vh;
+    width: 47vh;
     height: 8.5vh;
-    text-align: center;
 }
 
 
 .mypage-bar {
-
-    width: 375px;
-    height: 5ch;
+    width: 62.5vh;
+    height: 61px;
     background-color: bisque;
     text-align: center;
 }
 .feed-tag {
     background-color: rgb(224, 224, 224);
-    width: auto;
+    width: 18ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
 }
 .b-tag {
     background-color: rgb(224, 224, 224);
-    width: auto;
+    width: 18ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
 }
 .c-tag {
     background-color: rgb(224, 224, 224);
-    width: auto;
+    width: 18ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
@@ -140,7 +124,7 @@
 
 
 .bar-content-frame {
-    width: 375px;
+    width: 62.5vh;
     height: 20vh;
     background-color: blanchedalmond;
     text-align: center;
@@ -148,21 +132,21 @@
 
 .feed1 {
     border: 1px solid rgb(122, 81, 209);
-    width: 120px;
-    height: 120px;
+    width: 19vh;
+    height: 19vh;
     display: inline-block;
-
+    margin-right: 1ch;
 }
 .feed2 {
     border: 1px solid rgb(122, 81, 209);
-    width: 120px;
-    height: 120px;
+    width: 19vh;
+    height: 19vh;
     display: inline-block;
-
+    margin-right: 1ch;
 }
 .feed3 {
     border: 1px solid rgb(122, 81, 209);
-    width: 120px;
-    height: 120px;
+    width: 19vh;
+    height: 19vh;
     display: inline-block;
 }

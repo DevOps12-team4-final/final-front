@@ -56,15 +56,19 @@
 }
 .user-nickname {
     background-color: rgb(122, 81, 209);
+<<<<<<< HEAD
+    width: 20ch;
+=======
     width: 9ch;
-    height: 5ch;
-    display: inline-block;
     margin-right: 1ch;
-
 }
 .profile-edit {
     background-color: rgb(224, 224, 224);
+<<<<<<< HEAD
+    width: 16ch;
+=======
     width: 9ch;
+>>>>>>> origin/woobinguy
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
@@ -81,6 +85,21 @@
 
 .user-follower-cnt {
     background-color: rgb(254, 238, 11);
+<<<<<<< HEAD
+    width: 47vh;
+    height: 6ch;
+}
+.feed-cnt {
+    background-color: rgb(122, 81, 209);
+    width: 13ch;
+    height: 5ch;
+    display: inline-block;
+    margin-right: 1ch;
+}
+.follower-cnt{
+    background-color: rgb(122, 81, 209);
+    width: 13ch;
+=======
     width: 20vh;
     height: 5ch;
 }
@@ -88,17 +107,28 @@
 .follower-cnt{
     background-color: rgb(122, 81, 209);
     width: 9ch;
+>>>>>>> origin/woobinguy
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
 }
 .following-cnt{
     background-color: rgb(122, 81, 209);
+<<<<<<< HEAD
+    width: 13ch;
+=======
     width: 9ch;
+>>>>>>> origin/woobinguy
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
 }
+<<<<<<< HEAD
+.user-comment {
+    background-color: rgb(122, 81, 209);
+    width: 47vh;
+    height: 8.5vh;
+=======
 
 
 .user-comment {
@@ -106,33 +136,51 @@
     width: 28vh;
     height: 8.5vh;
     text-align: center;
+>>>>>>> origin/woobinguy
 }
 
 
 .mypage-bar {
+<<<<<<< HEAD
+    width: 62.5vh;
+    height: 61px;
+=======
 
     width: 375px;
     height: 5ch;
+>>>>>>> origin/woobinguy
     background-color: bisque;
     text-align: center;
 }
 .feed-tag {
     background-color: rgb(224, 224, 224);
+<<<<<<< HEAD
+    width: 18ch;
+=======
     width: auto;
+>>>>>>> origin/woobinguy
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
 }
 .b-tag {
     background-color: rgb(224, 224, 224);
+<<<<<<< HEAD
+    width: 18ch;
+=======
     width: auto;
+>>>>>>> origin/woobinguy
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
 }
 .c-tag {
     background-color: rgb(224, 224, 224);
+<<<<<<< HEAD
+    width: 18ch;
+=======
     width: auto;
+>>>>>>> origin/woobinguy
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
@@ -140,7 +188,11 @@
 
 
 .bar-content-frame {
+<<<<<<< HEAD
+    width: 62.5vh;
+=======
     width: 375px;
+>>>>>>> origin/woobinguy
     height: 20vh;
     background-color: blanchedalmond;
     text-align: center;
@@ -148,6 +200,24 @@
 
 .feed1 {
     border: 1px solid rgb(122, 81, 209);
+<<<<<<< HEAD
+    width: 19vh;
+    height: 19vh;
+    display: inline-block;
+    margin-right: 1ch;
+}
+.feed2 {
+    border: 1px solid rgb(122, 81, 209);
+    width: 19vh;
+    height: 19vh;
+    display: inline-block;
+    margin-right: 1ch;
+}
+.feed3 {
+    border: 1px solid rgb(122, 81, 209);
+    width: 19vh;
+    height: 19vh;
+=======
     width: 120px;
     height: 120px;
     display: inline-block;
@@ -164,5 +234,6 @@
     border: 1px solid rgb(122, 81, 209);
     width: 120px;
     height: 120px;
+>>>>>>> origin/woobinguy
     display: inline-block;
 }

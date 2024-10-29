@@ -51,7 +51,7 @@ function App() {
           <Route path="/ChatBoard" element={<ChatBoard />} />
           <Route path="/ChatRoomSetting" element={<ChatRoomSetting />} />
           <Route path="/Footer" element={<Footer />} />
-
+          <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </Router>
     </Provider>
