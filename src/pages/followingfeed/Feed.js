@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
-import { useLocation  } from 'react-router-dom';
+// import { useLocation  } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Header from '../frame/Header';
 import Footer from '../frame/Footer';
 import '../../scss/Feed.scss';
@@ -9,20 +10,21 @@ import FeedFooter from './FeedFooter';
 
 function Feed() {
 
-    const location = useLocation();
+    // const location = useLocation();
     const baseURL = "https://kr.object.ncloudstorage.com/bobaesj/"; // NCloud 기본 URL
-    
+
+    const { profileImage } = useSelector((state) => state.userSlice || {});
     // 각 게시물의 슬라이드 인덱스를 저장할 배열
     const [currentIndexes, setCurrentIndexes] = useState([]);
     // 현재 드래그 중인 게시물 인덱스 상태
     const [currentFeedIndex, setCurrentFeedIndex] = useState(0);
 
-    const [userForm] = useState({
-        userId: location.state?.userId,
-        profileImage: location.state?.profileImage,
-    });
+    // const [userForm] = useState({
+    //     userId: location.state?.userId,
+    //     profileImage: location.state?.profileImage,
+    // });
 
-    const [profileImage] = useState(`${baseURL}${userForm.profileImage}`);
+    // const [profileImage] = useState(`${baseURL}${userForm.profileImage}`);
 
     // 드래그 상태 관리
     const [isDragging, setIsDragging] = useState(false);
@@ -90,8 +92,9 @@ function Feed() {
     },[hasNextPage, loading]);
 
     useEffect(()=>{
+        console.log(profileImage);
         fetchFeed(page);
-    }, [page, fetchFeed]);
+    }, [page, fetchFeed, profileImage]);
 
     // 슬라이드 점 네비게이션 클릭 시 동작
     const goToSlide = (feedIndex, imageIndex) => {
@@ -182,6 +185,8 @@ function Feed() {
                     </div>
                 ) : null}
             </main>
+            <Footer profileImage={profileImage} />
+
         </div>
     </div>
   )

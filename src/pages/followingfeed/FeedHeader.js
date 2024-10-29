@@ -33,7 +33,7 @@ function FeedHeader({profileImage, nickname, regdate}) {
                     <span>{timeAgo(regdate)}</span>
                 </div>
             </div>
-            <button className='feed_message_button'>메시지</button>
+            <button className='feed_message_button'>Messge</button>
         </div>
     )
 }

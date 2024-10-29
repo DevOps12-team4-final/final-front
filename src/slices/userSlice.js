@@ -69,6 +69,9 @@ const userSlice = createSlice({
             console.log(sessionStorage.getItem('ACCESS_TOKEN'));
 
             console.log(action.payload.item.token);
+            // console.log(sessionStorage.getItem('ACCESS_TOKEN'));
+            // console.log(action.payload.item.token);
+            // console.log(action.payload.item.profileImage);
 
             return {
                 ...state,
@@ -77,8 +80,8 @@ const userSlice = createSlice({
                 email: action.payload.item.email,
                 nickname: action.payload.item.nickname,
                 tel: action.payload.item.tel,
-                profileImage: action.payload.item.profileImage,
                 role: action.payload.item.role,
+                profileImage: `https://kr.object.ncloudstorage.com/bobaesj/${action.payload.item.profileImage}`
             };
         });
 
@@ -109,7 +112,8 @@ const userSlice = createSlice({
                 id: 0,
                 email: '',
                 nickname: '',
-                tel: ''
+                tel: '',
+                profileImage: ''
             }
         });
         builder.addCase(logout.rejected, (state, action) => {
@@ -119,4 +123,5 @@ const userSlice = createSlice({
     }
 });
 
+// export const { logout } = userSlice.actions;
 export default userSlice.reducer;

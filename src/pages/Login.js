@@ -42,7 +42,7 @@ function Login() {
         console.log('로그인 성공');
       }
     } catch(error){
-      alert('로그인 중 오류가 발생했습니다.');
+      alert('로그인 중 오류가 발생했습니다. 다시입력하세요.');
       console.error('로그인 오류: ', error);
     }
   }

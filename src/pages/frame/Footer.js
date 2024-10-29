@@ -1,7 +1,6 @@
 import React from 'react'
 import '../../scss/framescss/Footer.scss';
 import { useNavigate } from 'react-router-dom';
-import { usesrS } from 'react-router-dom';
 function Footer({profileImage}) {
 
   const navigate = useNavigate();

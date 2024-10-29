@@ -120,7 +120,7 @@ function FeedFooter({ initialLikeCount, feedId }) {
                     <span 
                         className="material-icons" 
                         onClick={toggleHeart} 
-                        style={{ cursor: 'pointer', fontSize: '24px', color: 'black' }} // 아이콘 스타일 추가
+                        style={{ cursor: 'pointer', fontSize: '20px', color: '#9b111e' }} // 아이콘 스타일 추가
                     >
                         {isHeartFilled ? 'favorite' : 'favorite_border'}
                     </span>
@@ -136,7 +136,7 @@ function FeedFooter({ initialLikeCount, feedId }) {
                         <span 
                             className="material-icons" 
                             onClick={toggleBookmark} 
-                            style={{ cursor: 'pointer', fontSize: '24px', color: 'black' }} // 아이콘 스타일 추가
+                            style={{ cursor: 'pointer', fontSize: '20px', color: 'black' }} // 아이콘 스타일 추가
                         >
                             {isBookmarkFilled ? 'bookmark' : 'bookmark_border'}
                         </span>

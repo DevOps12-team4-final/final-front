@@ -1,4 +1,5 @@
 #feed{
+    width: 375px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +8,7 @@
 }
 
 .feed_container{
-    width: 600px;
+    width: 375px;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -20,19 +21,17 @@
 
 .feed_content_box {
     flex: 1;
-    margin-top: 70px; /* 헤더 높이만큼 아래에 여백 추가 */
-    margin-bottom: 70px; /* 푸터 높이만큼 아래에 여백 추가 */
-    margin-top: 80px; /* 헤더 높이만큼 아래에 여백 추가 */
-    margin-bottom: 80px; /* 푸터 높이만큼 아래에 여백 추가 */
+    margin-top: 60px; /* 헤더 높이만큼 아래에 여백 추가 */
+    margin-bottom: 60px; /* 푸터 높이만큼 아래에 여백 추가 */
     overflow-y: auto; /* 스크롤 가능하도록 설정 */
     background-color: #f5f5f5; /* 원하는 배경색 */
-    width: 600px;
+    width: 375px;
     box-sizing: border-box;
     height: auto; /* 고정 높이를 없애거나 auto로 설정 */
 }
 
 .feed_box {
-    width: 600px;
+    width: 375px;
     margin-bottom: 20px;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
@@ -56,7 +55,7 @@
 
 .following-content,
 .latest-content {
-    width: 600px;
+    width: 375px;
     margin-bottom: 20px;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid rgb(94, 14, 14);
@@ -74,7 +73,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 .user-info {
@@ -84,18 +83,18 @@
 
 .user-info img {
     border-radius: 50%;
-    width: 75px;
-    height: 75px;
+    width: 45px;
+    height: 45px;
     object-fit: cover;
     margin-right: 10px;
 }
 
 .user_info div strong{
-    font-size: 24px;
+    font-size: 20px;
 }
   
 .user_info div span{
-    font-size: 18px;
+    font-size: 16px;
     color: lightgray;
 }
 
@@ -105,21 +104,17 @@
     background-color: black;
 
 .feed_message_button{
-    font-size: 22px;
-    padding:5px 20px;
-    background-color: pink;
+    font-size: 16px;
+    padding:5px 15px;
+    background-color: lightgray;
     color: white;
     border-radius: 5px;
     border: none;
     cursor: pointer;
-
-    &:hover{
-        font-weight: bold;
-    }
 }
 
 .feed_content {
-    width: 600px;
+    width: 375px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -127,17 +122,18 @@
 }
 
 .feed_content p{
-    width: 560px;
+    width: 335px;
+    margin: 10px 0px;
 }
 
 .feed_content img {
-    width: 100%;
-    height: 600px;
+    width: 375px;
+    height: 375px;
     object-fit: cover;
 }
 
 .feed_footer {
-    height: 60px;
+    height: 50px;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
@@ -146,7 +142,7 @@
 }
 
 .feed_actions {
-    height: 60px;
+    height: 50px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -155,7 +151,7 @@
 }
 
 .feed_actions div {
-    width: 200px;
+    width: 125px;
     height:50px;
     display: flex;
     flex-direction: column;
@@ -180,7 +176,7 @@
     cursor: pointer;
 
     span {
-        font-size: 26px;
+        font-size: 20px;
         transition: transform 0.3s ease;
 
         &:hover{
@@ -195,8 +191,8 @@
 
 .carousel {
     position: relative;
-    width: 600px;
-    max-height: 600px;
+    width: 375px;
+    max-height: 375px;
     margin: 0 auto;
   }
 
@@ -231,7 +227,7 @@
 
 .spinner-container{
     width: 100px;
-    height: 60px;
+    height: 40px;
     margin: 20px auto;
     
     // border: 1px solid white;
@@ -240,8 +236,8 @@
 
 .spinner{
     margin: calc(50% - 25px) auto;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     box-sizing: border-box;
     border: 3px solid white;
     border-top-color: lightgray;

@@ -73,6 +73,26 @@ function FeedGrid() {
         fetchLatestFeed(page);
     }, [page, fetchLatestFeed]);
 
+    const user = location.state; // user 데이터를 state로부터 가져오기
+    const [profileImage, setProfileImage] = useState(null);
+    
+    useEffect(() => {
+      const fetchProfileImage = async () => {
+        try {
+          const response = await fetch('/api/user/profile-image', { credentials: 'include' });
+          if (response.ok) {
+            const image = await response.text();
+            setProfileImage(image); // 상태에 이미지 경로 저장
+          }
+        } catch (error) {
+          console.error("Error fetching profile image:", error);
+        }
+      };
+  
+      fetchProfileImage();
+    }, []);
+
+    
     return (
         <div id='feedgrid_body'>
         <div className='feedgrid_container'>
@@ -96,7 +116,9 @@ function FeedGrid() {
                         <div ref={observerRef} className="spinner"></div>
                     </div>
                 ) : null}
-            <Footer profileImage={`${baseURL}${location.state?.profileImage}`} />
+            {/* <Footer profileImage={`${baseURL}${location.state?.profileImage}`} /> */}
+            <Footer profileImage={profileImage} />
+
         </div>
         </div>
     );

@@ -49,22 +49,21 @@
 }
 
 .jtv_join {
-    background-color: black;
+    background-color:black;
     color: white;
 
     &:hover {
-        font-weight: bold;
         cursor: pointer;
     }
 }
 
 .jtv_back {
     background-color: white;
-    border-color: black;
-
+    border-color:black;
+    color:black;
     &:hover {
         cursor: pointer;
-        background-color: black;
+        background-color:black;
         color: white;
     }
 }
@@ -77,7 +76,6 @@
     padding: 0;
 
     &:hover {
-      font-weight: bold;
       cursor: pointer;
     }
 }

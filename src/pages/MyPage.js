@@ -6,6 +6,23 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const MyPage = () => {
+  const [profileImage, setProfileImage] = useState(null);
+  
+    useEffect(() => {
+      const fetchProfileImage = async () => {
+        try {
+          const response = await fetch('/api/user/profile-image', { credentials: 'include' });
+          if (response.ok) {
+            const image = await response.text();
+            setProfileImage(image); // 상태에 이미지 경로 저장
+          }
+        } catch (error) {
+          console.error("Error fetching profile image:", error);
+        }
+      };
+  
+      fetchProfileImage();
+    }, []);
   const [myPage, setMyPage] = useState(null);
 
   const { id } = useParams();
@@ -85,8 +102,8 @@ const MyPage = () => {
           </section>
         </div>
       </main>
-      <Footer profileImage={null} />
-    </section>
+      <Footer profileImage={profileImage} />
+      </section>
   );
 };
 

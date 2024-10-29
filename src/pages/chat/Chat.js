@@ -115,6 +115,7 @@ const Chat = () => {
             </main>
             
             <ChatInput className="chat-input" send_message={send_message} send_file={send_file} roomId={roomId} userId={loginUserId}/>
+            
         </>
     );
 };

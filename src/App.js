@@ -30,23 +30,7 @@ import Footer from "./pages/frame/Footer"
 
 function App() {
   
-    const [profileImage, setProfileImage] = useState(null);
   
-    useEffect(() => {
-      const fetchProfileImage = async () => {
-        try {
-          const response = await fetch('/api/user/profile-image', { credentials: 'include' });
-          if (response.ok) {
-            const image = await response.text();
-            setProfileImage(image); // 상태에 이미지 경로 저장
-          }
-        } catch (error) {
-          console.error("Error fetching profile image:", error);
-        }
-      };
-  
-      fetchProfileImage();
-    }, []);
   return (
     <Provider store={store}> {/* Redux Provider로 감싸기 */}
       <Router>
@@ -66,8 +50,9 @@ function App() {
           <Route path="/Chat" element={<Chat />} />
           <Route path="/ChatBoard" element={<ChatBoard />} />
           <Route path="/ChatRoomSetting" element={<ChatRoomSetting />} />
+          <Route path="/Footer" element={<Footer />} />
+
         </Routes>
-        <Footer profileImage={profileImage} />
       </Router>
     </Provider>
   );

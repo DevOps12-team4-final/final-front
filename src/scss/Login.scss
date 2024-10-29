@@ -49,15 +49,14 @@
     color: white;
 
     &:hover {
-        font-weight: bold;
         cursor: pointer;
     }
 }
   
 .login_joinBtn {
+    color:black;
     background-color: white;
-    border-color: black;
-
+    border: 1px solid black;
     &:hover {
         cursor: pointer;
         background-color: black;
@@ -68,12 +67,11 @@
 .login_pwFindBtn {
     background: none;
     border: none;
-    color: black;
+    color: 	black;
     font-size: 16px;
     padding: 0;
 
     &:hover {
-      font-weight: bold;
       cursor: pointer;
     }
 }
