@@ -68,3 +68,19 @@ export const logout = createAsyncThunk(
         }
     }
 );
+
+// 마이페이지
+export const getMyPage = createAsyncThunk(
+    "user/my-page",
+  
+    async (user, thunkApi) => {
+      try {
+        const response = await axios.get("/users/my-page", user);
+  
+        return response.data;
+      } catch (e) {
+        return thunkApi.rejectWithValue(e);
+      }
+    }
+  );
+  

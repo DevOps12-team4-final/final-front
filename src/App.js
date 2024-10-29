@@ -13,6 +13,7 @@ import FindTelInput from './pages/FindTelInput';
 import ResetPw from './pages/ResetPw';
 import Feed from './pages/followingfeed/Feed';
 import FeedGrid from './pages/latesetfeed/FeedGrid';
+import MyPage from './pages/MyPage';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/resetpw" element={<ResetPw />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/feedgrid" element={<FeedGrid />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </Router>
     </Provider>

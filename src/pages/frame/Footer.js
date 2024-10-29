@@ -14,6 +14,10 @@ function Footer({profileImage}) {
     navigate('/feedgrid');
   };
 
+  const handleMyPageClick = () => {
+    navigate('/mypage');
+  };
+
   return (
     <footer className="footer">
       <nav>
@@ -30,7 +34,7 @@ function Footer({profileImage}) {
             <button className="icon_button">
                 <i className="material-icons">chat</i>
             </button>
-            <button className="icon_button">
+            <button className="icon_button" onClick={handleMyPageClick}>
                 <img src={profileImage} alt="프로필" className='footer_profile'/>
             </button>
         </div>
