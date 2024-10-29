@@ -147,8 +147,11 @@ function Feed() {
 
   return (
     <div id='feed'>
-        <div className='feed_container'>
+         
             <Header />
+        
+        <div className='feed_container'>
+           
             <main className="feed_content_box">
                 {uniqueFeeds && uniqueFeeds.length > 0 && uniqueFeeds.map((feedItem, feedIndex) => (
                 <div key={feedItem.feedId} className="feed_box">
@@ -179,7 +182,6 @@ function Feed() {
                     </div>
                 ) : null}
             </main>
-            <Footer profileImage={profileImage}/>
         </div>
     </div>
   )

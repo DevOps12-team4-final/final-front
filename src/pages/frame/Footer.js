@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../scss/framescss/Footer.scss';
 import { useNavigate } from 'react-router-dom';
-
+import { usesrS } from 'react-router-dom';
 function Footer({profileImage}) {
 
   const navigate = useNavigate();
@@ -14,6 +14,18 @@ function Footer({profileImage}) {
     navigate('/feedgrid');
   };
 
+  const handlepost = () => {
+    navigate('/posts');
+  };
+
+
+    const handlechat = () => {
+    navigate('/chat');
+  };
+  const handlemypage = () => {
+    navigate('/MyPage');
+  };
+
   return (
     <footer className="footer">
       <nav>
@@ -24,13 +36,13 @@ function Footer({profileImage}) {
             <button className="icon_button" onClick={handleSearchClick}>
                 <i className="material-icons">search</i>
             </button>
-            <button className="icon_button">
+            <button className="icon_button" onClick={handlepost}>
                 <i className="material-icons">add_circle</i>
             </button>
-            <button className="icon_button">
+            <button className="icon_button" onClick={handlechat}>
                 <i className="material-icons">chat</i>
             </button>
-            <button className="icon_button">
+            <button className="icon_button" onClick={handlemypage}>
                 <img src={profileImage} alt="프로필" className='footer_profile'/>
             </button>
         </div>
