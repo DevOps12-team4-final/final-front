@@ -2,27 +2,14 @@ import { useLocation } from 'react-router-dom';
 import Footer from '../pages/frame/Footer'
 import Header from '../pages/frame/Header';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 
 function Post() {
   const location = useLocation();
   const user = location.state; // user 데이터를 state로부터 가져오기
-  const [profileImage, setProfileImage] = useState(null);
+  const { profileImage } = useSelector((state) => state.userSlice || {});
   
-  useEffect(() => {
-    const fetchProfileImage = async () => {
-      try {
-        const response = await fetch('/api/user/profile-image', { credentials: 'include' });
-        if (response.ok) {
-          const image = await response.text();
-          setProfileImage(image); // 상태에 이미지 경로 저장
-        }
-      } catch (error) {
-        console.error("Error fetching profile image:", error);
-      }
-    };
-
-    fetchProfileImage();
-  }, []);
+ 
   return (
     <div>
       <Header/>

@@ -3,6 +3,7 @@ import { useLocation  } from 'react-router-dom';
 import Header from '../frame/Header';
 import Footer from '../frame/Footer';
 import '../../scss/FeedGrid.scss';
+import { useSelector } from "react-redux";
 
 function FeedGrid() {
 
@@ -73,24 +74,8 @@ function FeedGrid() {
         fetchLatestFeed(page);
     }, [page, fetchLatestFeed]);
 
-    const user = location.state; // user 데이터를 state로부터 가져오기
-    const [profileImage, setProfileImage] = useState(null);
-    
-    useEffect(() => {
-      const fetchProfileImage = async () => {
-        try {
-          const response = await fetch('/api/user/profile-image', { credentials: 'include' });
-          if (response.ok) {
-            const image = await response.text();
-            setProfileImage(image); // 상태에 이미지 경로 저장
-          }
-        } catch (error) {
-          console.error("Error fetching profile image:", error);
-        }
-      };
-  
-      fetchProfileImage();
-    }, []);
+    const { profileImage } = useSelector((state) => state.userSlice || {});
+
 
     
     return (
