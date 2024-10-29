@@ -20,7 +20,9 @@ const userSlice = createSlice({
         // 로그인한 사용자 nickname 저장
         nickname: '',
         // 로그인한 사용자 tel 저장
-        tel: ''
+        tel: '',
+        // 로그인한 사용자 profileImage
+        profileImage: ''
     },
     // 상태 변경은 모두 비동기 액션을 처리하는 extraReducers에서 이루어진다.
     reducers: {
@@ -53,9 +55,9 @@ const userSlice = createSlice({
         builder.addCase(login.fulfilled, (state, action) => {
             alert(`${action.payload.item.nickname}님 환영합니다.`);
             sessionStorage.setItem('ACCESS_TOKEN', action.payload.item.token);
-            console.log(sessionStorage.getItem('ACCESS_TOKEN'));
-
-            console.log(action.payload.item.token);
+            // console.log(sessionStorage.getItem('ACCESS_TOKEN'));
+            // console.log(action.payload.item.token);
+            // console.log(action.payload.item.profileImage);
 
             return {
                 ...state,
@@ -63,7 +65,8 @@ const userSlice = createSlice({
                 id: action.payload.item.id,
                 email: action.payload.item.email,
                 nickname: action.payload.item.nickname,
-                tel: action.payload.item.tel
+                tel: action.payload.item.tel,
+                profileImage: `https://kr.object.ncloudstorage.com/bobaesj/${action.payload.item.profileImage}`
             };
         });
 
@@ -94,7 +97,8 @@ const userSlice = createSlice({
                 id: 0,
                 email: '',
                 nickname: '',
-                tel: ''
+                tel: '',
+                profileImage: ''
             }
         });
         builder.addCase(logout.rejected, (state, action) => {
@@ -104,4 +108,5 @@ const userSlice = createSlice({
     }
 });
 
+// export const { logout } = userSlice.actions;
 export default userSlice.reducer;

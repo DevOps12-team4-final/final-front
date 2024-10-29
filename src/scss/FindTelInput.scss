@@ -73,8 +73,10 @@
 }
 
 .fti_back_login {
+    color: black;
     background-color: white;
-    border-color: black;
+    border-color: black !important;
+
 
     &:hover {
         cursor: pointer;

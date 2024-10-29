@@ -8,9 +8,8 @@ function Header() {
         <div className="header_title_box">
             <p className='header_title'>Logo</p>
             <div className="header_option">
-            <input className="header_input" placeholder='검색'></input>
-                <button className="material-icons">notifications</button>
-                {/* <button className="material-icons">search</button> */}
+                <button className="material-icons" style={{ color: "white" }}>notifications</button>
+                <button className="material-icons" style={{ color: "white" }}>logout</button>
             </div>
         </div>
     </header>

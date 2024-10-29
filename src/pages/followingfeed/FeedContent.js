@@ -7,7 +7,6 @@ function FeedContent({content, feedFileDtoList, currentIndex, onMouseDown, onMou
      return (
         <div className="feed_content">
             <p>{content}</p>
-
             {/* 캐러셀 구현 */}
             {feedFileDtoList?.length > 0 && (
                 <div className="carousel"
@@ -19,7 +18,7 @@ function FeedContent({content, feedFileDtoList, currentIndex, onMouseDown, onMou
                         display: 'flex',
                         transition: 'transform 0.5s ease-in-out',
                         transform: `translateX(-${currentIndex * 375}px)`,
-                        width: `${feedFileDtoList.length * 375}px`
+                        width: `${feedFileDtoList.length * 375}px`,
                     }}>
                         {feedFileDtoList.map((file) => (
                             <img
