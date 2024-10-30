@@ -18,10 +18,7 @@ const MyPage = () => {
 
   const { id } = useParams();
   const loginUserId = useSelector((state) => state.userSlice.id);
-  const userNickname = useSelector(state => state.userSlice.nickname);
-
-  
-  const dispatch = useDispatch();
+  const userNickname = useSelector (state => state.userSlice.nickname);
 
   const findById = useCallback(async () => {
     try {
@@ -33,8 +30,25 @@ const MyPage = () => {
 
       const userDetail = response.data.item;
 
-      console.log(userDetail);
+      // console.log(userDetail);
       setMyPage(() => userDetail);
+    } catch (e) {
+      alert("에러가 발생했습니다.");
+    }
+  }, [id]);
+
+  const findFeedById = useCallback(async () => {
+    try {
+      const response = await axios.get(`http://localhost:9090/feeds`, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("ACCESS_TOKEN")}`,
+        },
+      });
+
+      const myFeeds = response.data.item;
+
+      // console.log(myFeeds);
+      setMyPage(() => myFeeds);
     } catch (e) {
       alert("에러가 발생했습니다.");
     }
@@ -42,7 +56,7 @@ const MyPage = () => {
 
   useEffect(() => {
       findById();
-  console.log(userNickname);
+      findFeedById();
 }, []);
 
   return (
@@ -51,7 +65,7 @@ const MyPage = () => {
         <div class="mypage-frame">
           <header class="mypage-header">
             <section class="user-image-section">
-          <div class="user-image">사진</div>
+          <div class="user-image">{baseURL}{profileImage}</div>
             </section>
             <section class="user-information-frame">
               <section class="user-information">
