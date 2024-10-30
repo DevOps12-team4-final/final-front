@@ -1,0 +1,84 @@
+/* 댓글 섹션 */
+.comment_section {
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: #fff; /* 댓글 창 배경 */
+    border-top: 1px solid #ddd; /* 위쪽 경계선 */
+    border-bottom: 1px solid #ddd; /* 아래쪽 경계선 */
+}
+
+/* 댓글 입력 필드 */
+.comment_input {
+    flex: 1;
+    width: 85%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #262626;
+    background-color: transparent;
+    padding: 8px;
+    border: none;
+    outline: none;
+    resize: none;
+
+}
+
+.comment_list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    height: 80px;
+    overflow-y: auto; /* 스크롤 가능 */
+    scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
+}
+
+.comment_list li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.comment_item {
+    display: flex;             /* 이미지와 텍스트를 가로로 정렬 */
+    align-items: center;       /* 세로 중앙 정렬 */
+    margin-bottom: 10px;       /* 댓글 간격 */
+}
+
+.comment_profile_image {
+    width: 40px;               /* 프로필 이미지 크기 */
+    height: 40px;
+    border-radius: 50%;        /* 원형 이미지 */
+    object-fit: cover;         /* 이미지가 잘리지 않고 원 안에 채워지도록 설정 */
+    margin-right: 10px;        /* 이미지와 텍스트 사이 간격 */
+}
+
+.comment_author {
+    font-weight: bold;         /* 작성자 이름을 조금 더 강조 */
+    margin-right: 5px;         /* 작성자 이름과 댓글 텍스트 간격 */
+}
+
+.comment_nickname {
+    font-size: 1.2rem;           /* 댓글 텍스트 크기 조정 */
+    line-height: 1.5;          /* 텍스트 간격 조정 */
+}
+.comment_text {
+    font-size: 1rem;           /* 댓글 텍스트 크기 조정 */
+    line-height: 1.5;          /* 텍스트 간격 조정 */
+}
+
+.send-button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #0095f6;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    padding: 8px 16px;
+}
+
+.send-button.disabled {
+    color: #b2dffc;
+    cursor: not-allowed;
+}
+

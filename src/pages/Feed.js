@@ -2,7 +2,9 @@ import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { useLocation  } from 'react-router-dom';
 import Header from './frame/Header';
 import Footer from './frame/Footer';
+import CommentSection from './CommentSection'; // 새로 만든 댓글 컴포넌트 가져오기
 import '../scss/Feed.scss';
+
 
 function Feed() {
 
@@ -31,6 +33,22 @@ function Feed() {
     const [hasNextPage, setHasNextPage] = useState(false);
     // 내가 호출했던 페이지의 히스토리를 저장
     const [pageParams, setPageParams] = useState([]);
+
+    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
+    const [activeFeedId, setActiveFeedId] = useState(null); // 현재 활성화된 댓글의 feedId
+    // 모달 열기
+    const openModal = (feedId) => {
+        setActiveFeedId(feedId);
+        setIsModalOpen(true);
+    };
+
+    // 모달 닫기
+    const closeModal = () => {
+        setIsModalOpen(false);
+        // setActiveFeedId(null); // feedId 초기화를 피해서 상태 유지
+        setActiveFeedId(null);
+    };
+
     const observerRef = useRef();
     console.log(observerRef);
 
@@ -40,13 +58,14 @@ function Feed() {
 
         try{
             const token = sessionStorage.getItem('ACCESS_TOKEN');
-            const response = await fetch(`/feed?page=${page}&size=10`, {
+            const response = await fetch(`/feeds?page=${page}&size=10`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 }
             })
-
+            
+            console.log(token)
             const data = await response.json();
             setFeed((prevFeed) => {
                 const newFeeds = data.item.content.filter(feedItem => 
@@ -90,6 +109,12 @@ function Feed() {
     useEffect(()=>{
         fetchFeed(page);
     },[page, fetchFeed])
+
+    useEffect(()=>{
+        if(feed.length > 0){
+            setCurrentIndexes(new Array(feed.length).fill(0));
+        };
+    }, [feed]);
 
 
     // 슬라이드 점 네비게이션 클릭 시 동작
@@ -194,7 +219,7 @@ function Feed() {
                             {feedItem.feedFileDtoList.map((file) => (
                                 <img
                                     key={file.feedFileId}
-                                    src={`${baseURL}${file.filepath}${file.newfilename}`}
+                                    src={`${baseURL}${file.filepath}${file.filename}`}
                                     alt={`게시물 이미지 ${file.feedFileId}`}
                                     style={{ width: '600px', height: '600px',}} // 이미지 크기 설정
                                 />
@@ -215,6 +240,8 @@ function Feed() {
                         </div>
                     )}
                 </div>
+
+
             
                 {/* <!-- 게시글 푸터 --> */}
                 <div className="feed_footer">
@@ -230,10 +257,12 @@ function Feed() {
                     </span>
                     <span>응원</span>
                   </div>
-                  <div>
-                    <i className="material-icons">chat_bubble_outline</i>
-                    <span>댓글</span>
-                  </div>
+
+                        <div onClick={() => openModal(feedItem.feedId)}>
+                            <i className="material-icons">chat_bubble_outline</i>
+                            <span>댓글</span>
+                        </div>
+                    
                   <div>
                     <i className="material-icons">fitness_center</i>
                     <span>운동</span>
@@ -244,6 +273,17 @@ function Feed() {
             <h1 ref={observerRef} style={{ width: 0, height: 0, overflow: 'hidden' }}>{""}</h1>
         </main>
         <Footer profileImage={profileImage}/>
+
+        {/* 댓글 모달 */}
+        {isModalOpen && (
+                <div className="modal-overlay" onClick={closeModal}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <span className="close-modal" onClick={closeModal}>X</span>
+                        {/* 댓글 섹션 모달 */}
+                        <CommentSection feedId={activeFeedId} />
+                    </div>
+                </div>
+            )}
     </div>
   )
 }

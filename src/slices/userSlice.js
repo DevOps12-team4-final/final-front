@@ -63,7 +63,8 @@ const userSlice = createSlice({
                 id: action.payload.item.id,
                 email: action.payload.item.email,
                 nickname: action.payload.item.nickname,
-                tel: action.payload.item.tel
+                tel: action.payload.item.tel,
+                profileImage: action.payload.item.profileImage
             };
         });
 
