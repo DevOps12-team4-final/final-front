@@ -17,17 +17,18 @@ const MyPage = () => {
   const { id } = useParams();
   const loginUserId = useSelector((state) => state.userSlice.id);
   const userNickname = useSelector((state) => state.userSlice.nickname);
+  const  profileImage  = useSelector((state) => state.userSlice || {});
 
   const [userForm] = useState({
     userId: location.state?.userId,
-    profileImage: location.state?.profileImage,
+    profileImage: profileImage //location.state?.profileImage,
   });
 
-  const [profileImage] = useState(`${baseURL}${userForm.profileImage}`);
+  //const [profileImage] = useState(`${baseURL}${userForm.profileImage}`);
 
   const findById = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:9090/users/my-page`, {
+      const response = await axios.get(`http://localhost:9090/users/my_page`, {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("ACCESS_TOKEN")}`,
         },
@@ -105,8 +106,9 @@ const MyPage = () => {
             </div>
           </section>
         </div>
+        <Footer profileImage={profileImage} />
       </main>
-      <Footer profileImage={profileImage} />
+      
     </section>
   );
 };
