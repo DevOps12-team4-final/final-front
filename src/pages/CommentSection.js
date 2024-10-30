@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 function CommentSection({ feedId }) {
 
     const location = useLocation();
-    const baseURL = "https://kr.object.ncloudstorage.com/bobaesj/"; // NCloud 기본 URL
+    const baseURL = "https://kr.object.ncloudstorage.com/bobaesj/";
 
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
@@ -21,8 +21,8 @@ function CommentSection({ feedId }) {
     
     const [profileImage] = useState(`${baseURL}${userForm.profileImage}`);
 
-     // 댓글 목록 불러오기
-         const fetchComments = useCallback(async () => {
+    // 댓글 목록 불러오기 함수
+    const fetchComments = useCallback(async () => {
         try {
             const token = sessionStorage.getItem('ACCESS_TOKEN');
             const response = await fetch(`http://localhost:9090/feed-comment/feed/${feedId}`, {
@@ -31,26 +31,31 @@ function CommentSection({ feedId }) {
                     'Content-Type': 'application/json'
                 }
             });
-
+    
             if (response.ok) {
                 const data = await response.json();
-                console.log("API 응답 데이터:", data);
-                setComments(data.items || []);
+                console.log("API 전체 응답 데이터:", data); // 전체 응답 데이터 확인
+                setComments(data); // 직접 댓글 데이터를 설정합니다.
             } else {
-                console.error("댓글 데이터를 불러오는 중 오류 발생: 응답 코드", response.status);
+                console.error("댓글 데이터를 불러오는 중 오류 발생:", response.status);
             }
         } catch (error) {
             console.error("댓글 데이터를 불러오는 중 오류 발생:", error);
         }
     }, [feedId]);
 
-    // 모달이 열릴 때마다 댓글 목록 불러오기
+    // 모달이 열릴 때 댓글 목록 불러오기
     useEffect(() => {
         if (feedId) {
             fetchComments();
+            console.log("fetchComments 호출됨 - feedId:", feedId);
         }
     }, [feedId, fetchComments]);
 
+    // comments 상태가 업데이트되었는지 확인
+    useEffect(() => {
+        console.log("댓글 목록 상태 업데이트:", comments);
+    }, [comments]);
 
     // 댓글 입력 처리 함수
     const handleInputChange = (e) => {
@@ -67,7 +72,7 @@ function CommentSection({ feedId }) {
         }
     
         try {
-            const response = await fetch('http://localhost:3000/feed-comment', {
+            const response = await fetch('http://localhost:9090/feed-comment', { // POST URL 수정 확인
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -88,21 +93,19 @@ function CommentSection({ feedId }) {
             const result = await response.json();
             console.log(result);
             const newCommentItem = {
-                profileImage: result.item.profileImage ? `${baseURL}${result.item.profileImage}` : null, // 기본 URL 추가 확인
-                author: result.item.nickname,
-                text: result.item.comment
+                profileImage: result.item.profileImage ? `${baseURL}${result.item.profileImage}` : null,
+                nickname: result.item.nickname,
+                comment: result.item.comment
             };
-            console.log(newCommentItem)
             setComments((prevComments) => [...prevComments, newCommentItem]);
-    
             setNewComment('');
-
             
         } catch (error) {
             console.error('댓글 작성 오류:', error);
             alert('댓글 작성에 실패했습니다.');
         }
     }
+
     return (
         <div className="comment_section">
             {/* 댓글 입력란 */}
@@ -132,14 +135,13 @@ function CommentSection({ feedId }) {
                         return (
                             <li key={index} className="comment_item">
                                 <img 
-                                    src={comment.profileImage} 
+                                    src={`${baseURL}${comment.profileImage}`} 
                                     alt="프로필 이미지" 
                                     className="comment_profile_image" 
-                                    onError={(e) => e.target.src = "/path/to/default-profile.png"} // 기본 이미지 경로 설정
+                                    // onError={(e) => e.target.src = ""} // 기본 이미지 경로 공백 설정
                                 />
-                                <span className='comment_nickname'>{nickname}</span>
-                                <span className="comment_author">{comment.author}:</span>
-                                <span className="comment_text">{comment.text}</span>
+                                <span className='comment_nickname'>{comment.nickname}</span>
+                                <span className="comment_text">{comment.comment}</span>
                             </li>
                         );
                     })
