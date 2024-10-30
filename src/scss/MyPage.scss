@@ -14,7 +14,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    // overflow: hidden;
+    overflow: hidden;
     box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1),  /* 오른쪽 그림자 */
                 -4px 0 6px rgba(0, 0, 0, 0.1);  /* 왼쪽 그림자 */
 }
@@ -22,8 +22,7 @@
     flex: 1;
     margin-top: 80px; /* 헤더 높이만큼 아래에 여백 추가 */
     margin-bottom: 80px; /* 푸터 높이만큼 아래에 여백 추가 */
-    overflow-y: auto; /* 스크롤 가능하도록 설정 */
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     width: 375px;
     box-sizing: border-box;
     // height: auto; /* 고정 높이를 없애거나 auto로 설정 */
@@ -39,118 +38,156 @@
 }
 
 .user-image-section {
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     width: 10ch;
     height: 12ch;
 }
 
 .user-image {
-    background-color: #a34242;
+    background-color: #7f3fa1;
     width: 9ch;
-    height: 11ch;
+    height: 9ch;
+    display: inline-block;
+    text-align: center;
+    border: 2px solid white; 
+    border-radius: 50%;
+    margin-top: 1ch;
 }
 
 // 닉네임, 프로필편집, 자기소개, 팔로우 팔로잉 등등 //
 .user-information-frame {
-    display: inline;
-    text-align: center;
+    margin-top: 1ch;
 }
 .user-information {
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     width: 20vh;
-    height: 6ch;
-    overflow: hidden;
+    height: 5ch;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 .user-nickname {
-    background-color: #a34242; 
-    width: 9ch;
+    background-color: #ffffff; 
+    width: 11ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
-
+    font-weight: bold;
 }
 .profile-edit {
-    background-color: #a34242; 
-    // background-color: #f5f5f5; 
-    width: 6vh;
-    height: 5ch;
+    background-color: #d7d7d7;
+    width: 8ch;
+    height: 2ch;
     display: inline-block;
     margin-right: 1ch;
-
+    border: 1px solid #d7d7d7;
+    border-radius: 6%;
+    padding-top: 0.4ch;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
 }
 .system-setting {
-    background-color: #a34242; 
-    // background-color: #f5f5f5; 
-    width: 4ch;
-    height: 5ch;
+    background-color: #ffffff; 
+    width: auto;
+    height: auto;
     display: inline-block;
     margin-right: 1ch;
+    font-size: 3ch;
+    cursor: pointer;
 }
 
 
 .user-follower-cnt {
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     width: 20vh;
     height: 5ch;
 }
 
 .follower-cnt{
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     width: 9ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
+    font-weight: bold;
 }
 .following-cnt{
-    background-color: #f5f5f5; 
+    background-color: #ffffff;  
     width: 9ch;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
+    font-weight: bold;
 }
 
 
-.user-comment {
-    background-color: #f5f5f5; 
+.user-comment-frame {
+    background-color: #ffffff; 
     width: 28vh;
     height: 8.5vh;
-    text-align: center;
+    text-align: left;
+    margin-left: 1ch;
+    font-weight: bold;
+}
+
+.user-comment {
+    background-color: #ffffff;  
+    width: 28vh;
+    height: 8.5vh;
+    text-align: left;
+    font-weight: lighter;
 }
 
 
 .mypage-bar {
     width: 375px;
     height: 5ch;
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
+    border-top: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+    display: flex;
     text-align: center;
+    justify-content: center;
+    margin: auto;
+    overflow: hidden;
 }
+
+.bar-content-frame {
+    margin-top: 1ch;
+}
+
 .feed-tag {
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     width: auto;
-    height: 5ch;
+    height: auto;
     display: inline-block;
-    margin-right: 1ch;
+    justify-content: center;
+    padding-top: 1.5ch;
+    margin-right: 10ch;
 }
+
 .b-tag {
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     width: auto;
-    height: 5ch;
+    height: auto;
     display: inline-block;
-    margin-right: 1ch;
+    padding-top: 1.5ch;
 }
 .c-tag {
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     width: auto;
     height: 5ch;
     display: inline-block;
     margin-right: 1ch;
+    padding-top: 1ch;
 }
 
 
 .bar-content-frame {
     width: 375px;
     height: 20vh;
-    background-color: #f5f5f5; 
+    background-color: #ffffff; 
     text-align: center;
 }
 
