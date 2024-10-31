@@ -11,10 +11,12 @@ function Post() {
   return (
     <div id='post'>
       <div className='post_container'>
-            <Header/>
+        <Header/>
+          <div classNmae='post_context'>
             <h1>게시물 페이지</h1>
             {user && <p>{user.nickname}님, 환영합니다!</p>}
-            <Footer/>
+          </div>
+        <Footer/>
       </div>
     </div>
   );
