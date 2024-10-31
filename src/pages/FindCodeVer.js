@@ -82,7 +82,7 @@ const handleLogin = () => {
     <div id='fu_auth_body'>
         <form className="fu_auth_container" onSubmit={handleVerification}>
             <div className="fu_auth_logo">
-                <p>Logo</p>
+                <p>Hi-we</p>
             </div>
             <div className="fu_auth_text">{`${userForm.tel}로 전송된 6자리 코드를 입력하세요`}</div>
             <div className="fu_auth_chkNumBox">

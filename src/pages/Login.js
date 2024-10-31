@@ -59,32 +59,32 @@ function Login() {
 
   return (
     <div id='login_body'>
-    <form onSubmit={handleLogin} className='login_container'>
-        <div className="login_logo">
-            <p>Logo</p>
-        </div>
-        <div className='login_emailBox'>
-            <input 
-                className='login_email'
-                type="text" 
-                name="email"
-                value={userForm.email} 
-                onChange={changeTextField}
-                placeholder='이메일'
-            />
-        </div>
-        <div className='login_passwordBox'>
-            <input 
-                className='login_password'
-                type="password" 
-                name="password"
-                value={userForm.password} 
-                onChange={changeTextField} 
-                placeholder='비밀번호'
-            />
-        </div>
-        <button type="submit" className='login_loginBtn'>로그인</button>
-        <button type='button' className='login_pwFindBtn' onClick={handleFindUser}>비밀번호를 잊으셨나요?</button>
+      <form onSubmit={handleLogin} className='login_container'>
+          <div className="login_logo">
+              <p>Hi-we</p>
+          </div>
+          <div className='login_emailBox'>
+              <input 
+                  className='login_email'
+                  type="text" 
+                  name="email"
+                  value={userForm.email} 
+                  onChange={changeTextField}
+                  placeholder='이메일'
+              />
+          </div>
+          <div className='login_passwordBox'>
+              <input 
+                  className='login_password'
+                  type="password" 
+                  name="password"
+                  value={userForm.password} 
+                  onChange={changeTextField} 
+                  placeholder='비밀번호'
+              />
+          </div>
+          <button type="submit" className='login_loginBtn'>로그인</button>
+          <button type='button' className='login_pwFindBtn' onClick={handleFindUser}>비밀번호를 잊으셨나요?</button>
 
         {/* '또는' 부분 */}
         <div className="divider">

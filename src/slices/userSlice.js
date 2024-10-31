@@ -1,33 +1,31 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { getMyPage, join, login, logout } from '../apis/userApis';
 
+const initialState = {
+    isLogin: sessionStorage.getItem('ACCESS_TOKEN') ? true : false,
+    id: sessionStorage.getItem('USER_ID') || 0,
+    email: sessionStorage.getItem('USER_EMAIL') || '',
+    nickname: sessionStorage.getItem('USER_NICKNAME') || '',
+    tel: sessionStorage.getItem('USER_TEL') || '',
+    profileImage: sessionStorage.getItem('USER_PROFILE_IMAGE') || ''
+};
+
 // 이 Redux는 createSlice를 사용해 회원 상태를 관리하는 역할이다.
 // 회원가입, 로그인, 로그아웃을 처리한다.
 // 비동기 액션이 성공(fullfilled)하거나 실패(rejected)했을때 어떻게 업데이트 할지 정의한다.
 const userSlice = createSlice({
     
     name: 'users',
-    initialState: {
-        isLogin: false,
-        // 로그인한 사용자 id 저장
-        userId: 0,
-        // 로그인한 사용자 email 저장
-        email: '',
-        nickname: '',
-        tel: '',
 
-        role:'',
+    // 초기상태 정의한다.
+    initialState,
 
-        profileImage:'',
-
-
-
-    },
     // 상태 변경은 모두 비동기 액션을 처리하는 extraReducers에서 이루어진다.
-    reducers: {
+    reducers: {},
 
-    },
-    // 비동기 작업인 join, login, logout 같은 액션이 완료될때(fulfiiled), builder = 특정 액션
+    // 비동기 작업인 join, login, logout 같은 액션이 완료될때(fulfiiled),
+    // 실패할때(rejected)상태를 업데이트하는 로직을 정의한다.
+    // builder = 특정 액션
     extraReducers: (builder) => {
 
         // builder.addCase는 특정 액션이 발생했을 때, 그 액션에 대한 상태 업데이트를 정의해주는 함수이다.
@@ -49,30 +47,24 @@ const userSlice = createSlice({
         // 로그인 성공했을때
         builder.addCase(login.fulfilled, (state, action) => {
             alert(`${action.payload.item.nickname}님 환영합니다.`);
-            sessionStorage.setItem('ACCESS_TOKEN', action.payload.item.token);
-            sessionStorage.setItem('userId', action.payload.item.userid);
-            sessionStorage.setItem('nickname', action.payload.item.nickname)
-            sessionStorage.setItem('profileImage',action.payload.item.profileImage)
-            sessionStorage.setItem('role', action.payload.item.role)
-            sessionStorage.setItem('tel',action.payload.item.tel)
-            sessionStorage.setItem('email',action.payload.item.email)
-            console.log(sessionStorage.getItem('ACCESS_TOKEN'));
+            const { id, email, nickname, tel, profileImage, token} = action.payload.item;            
 
-            console.log(action.payload.item.token);
-            // console.log(sessionStorage.getItem('ACCESS_TOKEN'));
-            // console.log(action.payload.item.token);
-            // console.log(action.payload.item.profileImage);
+            sessionStorage.setItem('ACCESS_TOKEN', token);
+            sessionStorage.setItem('USER_ID', id);
+            sessionStorage.setItem('USER_EMAIL', email);
+            sessionStorage.setItem('USER_NICKNAME', nickname);
+            sessionStorage.setItem('USER_TEL', tel);
+            sessionStorage.setItem('USER_PROFILE_IMAGE', `https://kr.object.ncloudstorage.com/bobaesj/${profileImage}`);
 
             return {
                 ...state,
                 isLogin: true,
-                userId: action.payload.item.userid,
-                email: action.payload.item.email,
-                nickname: action.payload.item.nickname,
-                tel: action.payload.item.tel,
-                role: action.payload.item.role,
-                profileImage: `https://kr.object.ncloudstorage.com/bobaesj/${action.payload.item.profileImage}`
-            };
+                id,
+                email,
+                nickname,
+                tel,
+                profileImage: `https://kr.object.ncloudstorage.com/bobaesj/${profileImage}`
+            }
         });
         builder.addCase(login.rejected, (state, action) => {
             if(action.payload.statusMessage === 'email not exist') {

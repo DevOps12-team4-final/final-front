@@ -44,20 +44,25 @@ export const logout = createAsyncThunk(
   // type
   "user/logout",
 
-  // payload
-  async (_, thunkApi) => {
-    try {
-      const token = sessionStorage.getItem("ACCESS_TOKEN");
+    // payload
+    async (_, thunkApi) => {
+        try {
+            const token = sessionStorage.getItem('ACCESS_TOKEN');
+            
+            // 토큰이 없으면 로그아웃 요청을 보내지 않음
+            if (!token) {
+                throw new Error('No token found');
+            }
+            const response = await axios.get(
+                `/users/logout`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
 
-      // 토큰이 없으면 로그아웃 요청을 보내지 않음
-      if (!token) {
-        throw new Error("No token found");
-      }
-      const response = await axios.get(`/members/logout`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      
 
       return response.data.item;
     } catch (e) {
