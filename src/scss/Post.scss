@@ -1,0 +1,20 @@
+#post{
+    width: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    min-height: 100vh; // 브라우저 창의 높이를 기준으로 최소 높이 설정
+}
+
+.post_container{
+    width: 375px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    // overflow: hidden;
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1),  /* 오른쪽 그림자 */
+                -4px 0 6px rgba(0, 0, 0, 0.1);  /* 왼쪽 그림자 */
+}

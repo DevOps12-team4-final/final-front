@@ -3,6 +3,10 @@ import Footer from '../pages/frame/Footer'
 import Header from '../pages/frame/Header';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
+import Header from './frame/Header';
+import Footer from './frame/Footer';
+
+import '../scss/Post.scss';
 
 function Post() {
   const location = useLocation();
@@ -11,14 +15,14 @@ function Post() {
   
  
   return (
-    <div>
-      <Header/>
-      <h1>게시물 페이지</h1>
-      
-      {user && <p>{user.nickname}님, 환영합니다!</p>}
-      <Footer profileImage={profileImage} />
+    <div id='post'>
+      <div className='post_container'>
+            <Header/>
+            <h1>게시물 페이지</h1>
+            {user && <p>{user.nickname}님, 환영합니다!</p>}
+            <Footer profileImage={profileImage}/>
       </div>
-    
+    </div>
   );
 }
 
