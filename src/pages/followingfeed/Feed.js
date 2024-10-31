@@ -42,7 +42,8 @@ function Feed() {
 
         try{
             const token = sessionStorage.getItem('ACCESS_TOKEN');
-            const response = await fetch(`/feeds/following?page=${page}&size=10`, {
+            // const response = await fetch(`/feeds/following?page=${page}&size=10`, {
+                const response = await fetch(`/feeds/following`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
