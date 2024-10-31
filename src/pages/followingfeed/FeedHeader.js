@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function FeedHeader({profileImage, nickname, regdate, isFollowing: initialIsFollowing, userId, onMoreClick}) {
     // 초기 팔로우 상태 설정
     const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
-    // 모달 상태 추가
-    // const [isModalOpen, setIsModalOpen] = useState(false);
+    const scrollPositionRef = useRef(null);
 
     // 팔로우 상태 토글 함수
     const handleFollowToggle = async () => {
         try {
             const token = sessionStorage.getItem('ACCESS_TOKEN');
             console.log(isFollowing);
+
+            // 현재 스크롤 위치를 sessionStorage에 저장
+            scrollPositionRef.current = window.scrollY;
+            sessionStorage.setItem('scrollPosition', scrollPositionRef.current);
+
             if (isFollowing) {
                 // 언팔로우 API 호출
                 const response = await fetch(`/follows/unfollow/${userId}`, {
@@ -22,7 +26,7 @@ function FeedHeader({profileImage, nickname, regdate, isFollowing: initialIsFoll
                 });
                 if (response.ok) {
                     setIsFollowing(false);
-                    console.log(isFollowing);
+                    window.location.reload(); // 전체 페이지 새로고침
                 }
             } else {
                 // 팔로우 API 호출
@@ -36,7 +40,7 @@ function FeedHeader({profileImage, nickname, regdate, isFollowing: initialIsFoll
                 });
                 if (response.ok) {
                     setIsFollowing(true);
-                    console.log(isFollowing);
+                    window.location.reload(); // 전체 페이지 새로고침
                 }
             }
         } catch (error) {
@@ -44,13 +48,14 @@ function FeedHeader({profileImage, nickname, regdate, isFollowing: initialIsFoll
         }
     };
 
-    // const handleMoreClick = () => {
-    //     setIsModalOpen(!isModalOpen);
-    // };
-
-    // const handleCloseModal = () => {
-    //     setIsModalOpen(false);
-    // };
+    // 페이지가 로드될 때 저장된 스크롤 위치로 이동
+    useEffect(() => {
+        const savedPosition = sessionStorage.getItem('scrollPosition');
+        if (savedPosition) {
+            window.scrollTo(0, parseInt(savedPosition, 10));
+            sessionStorage.removeItem('scrollPosition'); // 위치 복원 후 제거
+        }
+    }, []);
 
     // 시간 차이를 계산하는 함수
     function timeAgo(regdate) {
@@ -91,20 +96,6 @@ function FeedHeader({profileImage, nickname, regdate, isFollowing: initialIsFoll
                       style={{ cursor: 'pointer', fontSize: '28px'}}
                       onClick={onMoreClick}>more_vert</span>
             </div>
-        
-            {/* modal */}
-            {/* {isModalOpen &&(
-                <div className='modal_overlay' onClick={handleCloseModal}>
-                    <div className='modal_content' onClick={(e) => e.stopPropagation()}>
-                        <button className='modal_button' onClick={() => console.log("차단")}>
-                            차단
-                        </button>
-                        <button className='modal_button' onClick={() => console.log("신고")}>
-                            신고
-                        </button>
-                    </div>
-                </div>
-            )} */}
         </div>
     );
 }

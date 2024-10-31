@@ -2,20 +2,24 @@ import React from 'react'
 import '../../scss/framescss/Footer.scss';
 import { useNavigate } from 'react-router-dom';
 
-function Footer({profileImage, feedContentRef}) {
+function Footer({profileImage, contentRef}) {
 
   const navigate = useNavigate();
 
     const handleHomeClick = () => {
         navigate('/feed');
 
-        if(feedContentRef.current){
-            feedContentRef.current.scrollTop = 0;
+        if(contentRef.current){
+            contentRef.current.scrollTop = 0;
         }
     };
 
     const handleSearchClick = () => {
-        navigate('/feedgrid');
+        navigate('/searchPage');
+
+        if(contentRef.current){
+            contentRef.current.scrollTop = 0;
+        }
     };
 
     return (

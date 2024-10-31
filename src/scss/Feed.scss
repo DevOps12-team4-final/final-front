@@ -14,7 +14,6 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    // overflow: hidden;
     box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1),  /* 오른쪽 그림자 */
                 -4px 0 6px rgba(0, 0, 0, 0.1);  /* 왼쪽 그림자 */
 }
@@ -109,9 +108,10 @@
     font-size: 18px;
     padding: 0 10px;
     background-color: transparent;
-    border: 1px solid black;
-    border-radius: 5px;
-    color: 	black;
+    border: none;
+    // border: 1px solid black;
+    // border-radius: 5px;
+    color: 	rgb(255, 200, 50);
     cursor: pointer;
 }
 

@@ -25,7 +25,7 @@ function Feed() {
     const [hasNextPage, setHasNextPage] = useState(false);
     // 차단 상태 관리
     const [isBlocked, setIsBlocked] = useState(false); 
-    const feedContentRef = useRef(null);
+    const contentRef = useRef(null);
     const observerRef = useRef();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -178,7 +178,7 @@ function Feed() {
     <div id='feed'>
         <div className='feed_container'>
             <Header />
-            <main className="feed_content_box" ref={feedContentRef}>
+            <main className="feed_content_box" ref={contentRef}>
                 {uniqueFeeds && uniqueFeeds.length > 0 && uniqueFeeds.map((feedItem, feedIndex) => (
                 <div key={feedItem.feedId} className="feed_box">
                     <FeedHeader 
@@ -223,7 +223,7 @@ function Feed() {
                     </div>
                 ) : null}
             </main>
-            <Footer profileImage={profileImage} feedContentRef={feedContentRef}/>
+            <Footer profileImage={profileImage} contentRef={contentRef}/>
         </div>
     </div>
   )
