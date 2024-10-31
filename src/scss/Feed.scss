@@ -102,7 +102,7 @@
     font-size: 22px;
     padding:5px 20px;
     background-color: black;
-
+}
 .feed_message_button{
     font-size: 16px;
     padding:5px 15px;
@@ -225,7 +225,6 @@
     background-color: #717171; /* 활성화된 점 색상 */   
 }
 
-<<<<<<< HEAD
 .spinner-container{
     width: 100px;
     height: 40px;
@@ -252,7 +251,6 @@
         transform: rotate(360deg);
     }
 }
-=======
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -282,5 +280,4 @@
     cursor: pointer;
     font-size: 18px;
     color: red;
->>>>>>> origin/feature/feed-comment
 }

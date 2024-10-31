@@ -3,8 +3,7 @@ import Footer from '../pages/frame/Footer'
 import Header from '../pages/frame/Header';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
-import Header from './frame/Header';
-import Footer from './frame/Footer';
+
 
 import '../scss/Post.scss';
 

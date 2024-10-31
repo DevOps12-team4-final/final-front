@@ -13,7 +13,8 @@ import Logout from './pages/sign/Logout';
 // import useAlarmWebSocket from './components/frame/useAlarmWebSocket';
 import AlarmList from './pages/alarm/AlarmList'
 import React, { useEffect, useState } from 'react';
-
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 
 import { BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -23,17 +24,18 @@ import Post from './pages/Post';
 import FindCodeVer from './pages/FindCodeVer';
 import FindTelInput from './pages/FindTelInput';
 import ResetPw from './pages/ResetPw';
-<<<<<<< HEAD
 import MyPage from './pages/MyPage';
 import Feed from './pages/followingfeed/Feed';
 import FeedGrid from './pages/latesetfeed/FeedGrid';
 import Footer from "./pages/frame/Footer"
-
+// persistor 객체를 생성
+const persistor = persistStore(store);
 function App() {
   
   
   return (
     <Provider store={store}> {/* Redux Provider로 감싸기 */}
+          <PersistGate loading={null} persistor={persistor}> {/* 생성한 persistor 전달 */}
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -55,33 +57,7 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </Router>
-=======
-import Feed from './pages/Feed';
-import { PersistGate } from 'redux-persist/integration/react';
-import { persistStore } from 'redux-persist';
-
-// persistor 객체를 생성
-const persistor = persistStore(store);
-
-function App() {
-  return (
-    <Provider store={store}> {/* Redux Provider로 감싸기 */}
-      <PersistGate loading={null} persistor={persistor}> {/* 생성한 persistor 전달 */}
-        <Router>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/join" element={<Join />} />
-            <Route path="/posts" element={<Post />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/jointelver" element={<JoinTelVer />} />
-            <Route path="/findtelinput" element={<FindTelInput />}/>
-            <Route path="/findcodever" element={<FindCodeVer />} />
-            <Route path="/resetpw" element={<ResetPw />} />
-            <Route path="/feed" element={<Feed />} />
-          </Routes>
-        </Router>
       </PersistGate>
->>>>>>> origin/feature/feed-comment
     </Provider>
   );
 }
