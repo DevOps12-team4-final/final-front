@@ -190,7 +190,7 @@ function ResetPw() {
 	<div id='rp_body'>
 		<form className="rp_container" onSubmit={handleResetPw}>
 			<div className="rp_logo">
-				<p>Logo</p>
+				<p>Hi-we</p>
 			</div>
 			<div className="rp_text1">
 				이메일 주소 확인

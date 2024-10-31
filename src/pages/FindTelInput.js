@@ -168,7 +168,7 @@ function FindTelInput() {
 	<div id='fti_body'>
 		<form className="fti_container" onSubmit={handeTelVer}>
 			<div className="fti_logo">
-				<p>Logo</p>
+				<p>Hi-we</p>
 			</div>
 			<div className="fti_text">가입시 등록한 번호를 입력하세요 </div>
 			<div className="fti_chkNumBox">

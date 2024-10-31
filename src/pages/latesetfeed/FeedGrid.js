@@ -20,6 +20,7 @@ function FeedGrid() {
         index === self.findIndex((item)=>item.feedId === feedItem.feedId)
     );
 
+
     const fetchLatestFeed = useCallback(async(page) => {
         setLoading(true);
 
@@ -90,6 +91,8 @@ function FeedGrid() {
                         </div>
                     ))}
                 </main>
+
+
 
                 {hasNextPage ? (
                     <div className='spinner-container'>

@@ -405,7 +405,7 @@ function Join() {
 		<div id='join_body'>
 			<form onSubmit={handleJoin} className="join_container">
 				<div className="join_logo">
-					Logo
+					Hi-we
 				</div>
 				<div className="join_text">빠르고 쉽게 가입할 수 있습니다.</div>
 				<div className="join_emailBox">

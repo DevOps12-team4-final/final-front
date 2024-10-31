@@ -61,7 +61,7 @@ function Login() {
     <div id='login_body'>
       <form onSubmit={handleLogin} className='login_container'>
           <div className="login_logo">
-              <p>Logo</p>
+              <p>Hi-we</p>
           </div>
           <div className='login_emailBox'>
               <input 

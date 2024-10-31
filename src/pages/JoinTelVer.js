@@ -95,7 +95,7 @@ function JoinTelVer() {
     <div id='jtv_body'>
         <form className="jtv_container" onSubmit={handleVerification}>
             <div className="jtv_logo">
-                <p>Logo</p>
+                <p>Hi-we</p>
             </div>
             <div className="jtv_text">{`${userForm.tel}로 전송된 6자리 코드를 입력하세요`}</div>
             <div className="jtv_chkNumBox">
