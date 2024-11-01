@@ -11,7 +11,7 @@ const searverUrl ="http://localhost:9090/notifications"
 //가져오기
 export const get = createAsyncThunk(
   // type
-  "alarm/get",
+  "messages/get",
   // payload
   async (userId, thunkApi) => {
     try {
@@ -32,12 +32,20 @@ export const get = createAsyncThunk(
 //제거
 export const remove = createAsyncThunk(
   // type
-  "alarm/delete",
+  "messages/remove",
   // payload
-  async (alarmId, thunkApi) => {
+  async ( params, thunkApi) => {
     try {
-      const response = await axios.put(`${searverUrl}/${alarmId}/read`)
-      return alarmId;
+      const response = await axios.delete(`${searverUrl}`,{
+        userId: params.userId,
+        url: params.url,
+        type: params.type
+      })
+      const tryRemovedData ={
+        url:params.url,
+        type:params.type
+      }
+      return tryRemovedData;
     } catch (e) {
       return thunkApi.rejectWithValue(e);
     }

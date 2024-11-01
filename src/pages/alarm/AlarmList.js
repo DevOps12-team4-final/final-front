@@ -30,31 +30,34 @@ const AlarmList = () => {
     console.log("TRY GET")
   }
 
-  const removeAlarm = (targetId) => {
-    const alarmId = targetId;
-    dispatch(remove(alarmId));
+  const removeAlarm = (url,type) => {
+    dispatch(remove({
+      userId: loginUserId,
+      url: url,
+      type: type
+    }));
     console.log("remove: "+alarms)
   };
 
-  const naviAlarm = (type,targetId) => {
+  const naviAlarm = (url,type) => {
     switch (type) {
       case "COMMENT_LIKE":
-          navigator(`/comments/${targetId}`); // Navigate to the comment
+          navigator(`/comments/${url}`); // Navigate to the comment
           break;
       case "FEED_COMMENT":
-          navigator(`/feed/comments/${targetId}`); // Navigate to the feed comment
+          navigator(`/feed/comments/${url}`); // Navigate to the feed comment
           break;
       case "FEED_LIKE":
-          navigator(`/feeds/${targetId}`); // Navigate to the specific feed
+          navigator(`/feeds/${url}`); // Navigate to the specific feed
           break;
       case "FEED":
-          navigator(`/feeds/${targetId}`); // Navigate to the feed
+          navigator(`/feeds/${url}`); // Navigate to the feed
           break;
       case "FOLLOW":
-          navigator(`/users/${targetId}`); // Navigate to the followed user profile
+          navigator(`/users/${url}`); // Navigate to the followed user profile
           break;
       case "chat":
-          navigator(`/chat/${targetId}`); // Navigate to the chat with the user
+          navigator(`/chat/${url}`); // Navigate to the chat with the user
           break;
       default:
           console.log("Unknown alarm type");
@@ -76,8 +79,8 @@ const AlarmList = () => {
               nickname={alarm.nickname}
               type={alarm.type}
               message={alarm.message}
-              removeAlarm={()=>{removeAlarm(alarm.alarmId)}}
-              naviAlarm={naviAlarm}
+              removeAlarm={()=>{removeAlarm(alarm.url,alarm.type)}}
+              naviAlarm={()=>{removeAlarm(alarm.url,alarm.type)}}
               className={``}
             />
           })}

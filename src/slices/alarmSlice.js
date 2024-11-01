@@ -10,7 +10,8 @@ const alarmSlice = createSlice({
   reducers: {
     addMessage: (state, action) => {
       console.log(state)
-      state.alarms.unshift()(action.payload); // 받은 메시지를 배열의 앞에 추가
+      console.log(action.payload)
+      state.alarms.unshift(action.payload); // 받은 메시지를 배열의 앞에 추가
     },
   },
 
@@ -23,8 +24,11 @@ const alarmSlice = createSlice({
     // 값가져오기
     builder.addCase(get.fulfilled, (state, action) => {
         //item 필터링 시도
-        console.log(action.payload)
-        state.alarms = action.payload
+        if(state.isGetInit == false){
+          console.log(action.payload)
+          state.alarms = action.payload
+          state.isGetInit = true
+        }
         return state;
     });
     builder.addCase(get.rejected, (state, action) => {
@@ -33,13 +37,19 @@ const alarmSlice = createSlice({
 
     //알람 지우기
     builder.addCase(remove.fulfilled, (state, action) => {
-        
-        return {
-            ...state,
-            alarms: state.alarms.filter((message) => message.id !== action.payload)
-        };
+      console.log(action.payload)
+      return {
+        ...state,
+        alarms: state.alarms.filter(
+            (message) =>
+                message.url !== action.payload.url ||
+                message.type !== action.payload.type
+        )
+    };
+    
     });
     builder.addCase(remove.rejected, (state, action) => {
+        console.log("fail")
         return state;
     });
   }

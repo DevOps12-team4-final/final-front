@@ -88,20 +88,6 @@ function FeedHeader({profileImage, nickname, regdate, isFollowing: initialIsFoll
                       style={{ cursor: 'pointer', fontSize: '28px'}}
                       onClick={onMoreClick}>more_vert</span>
             </div>
-        
-            {/* modal */}
-            {/* {isModalOpen &&(
-                <div className='modal_overlay' onClick={handleCloseModal}>
-                    <div className='modal_content' onClick={(e) => e.stopPropagation()}>
-                        <button className='modal_button' onClick={() => console.log("차단")}>
-                            차단
-                        </button>
-                        <button className='modal_button' onClick={() => console.log("신고")}>
-                            신고
-                        </button>
-                    </div>
-                </div>
-            )} */}
         </div>
     )
 }

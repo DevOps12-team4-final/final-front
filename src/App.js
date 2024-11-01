@@ -20,7 +20,7 @@ import { BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
 // import "slick-carousel/slick/slick.css"; 
 // import "slick-carousel/slick/slick-theme.css";
-import Post from './pages/Post';
+import PostFeed from './pages/feed/PostFeed';
 import FindCodeVer from './pages/FindCodeVer';
 import FindTelInput from './pages/FindTelInput';
 import ResetPw from './pages/ResetPw';
@@ -47,7 +47,7 @@ function App() {
           <Route path="/findcodever" element={<FindCodeVer />} />
           <Route path="/resetpw" element={<ResetPw />} />
           < Route element={<Layout/>}>
-            <Route path="/posts" element={<Post />} />
+            <Route path="/posts" element={<PostFeed />} />
             <Route path="/feeds" element={<Feed />} />
             <Route path="/MyPage" element={<MyPage />} />
             <Route path="/searchPage" element={<SearchPage />} />

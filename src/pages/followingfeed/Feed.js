@@ -51,6 +51,7 @@ function Feed() {
         setIsChatlOpen(true);
     };
     const closeChatModal = () => {
+        console.log("AAA")
         setIsChatlOpen(false);
     };
 
@@ -243,7 +244,7 @@ function Feed() {
                 {/*차단모달*/}
                 {isModalOpen && (
                     <>
-                        <div className="modal_overlay" onClick={closeModal}></div>
+                        <div className="modal_overlay" onClick={toggleModal}></div>
                         <div className={`slide_modal ${isModalOpen ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
                             <div className="modal_content">
                                 <button onClick={() => handleBlockToggle(feed[0].userId)}>
