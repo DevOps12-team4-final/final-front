@@ -41,11 +41,20 @@ function SearchPage() {
             debouncedFetch.cancel();
         };
     }, [searchText]);
+
+    const roomProfileImg = (user, index) => {
+        if (user.profileImage) {
+            return `${baseURL}${user.profileImage}`;
+        }
+        return require('../images/default-profile.jpg'); // 기본 프로필 이미지
+    };
+
     const handleCancelClick = () => {
         setSearchText('');
         setSearchResults([]);
         setFocused(false);
     };
+
     return (
         <div id='search'>
             <div className='search-container'>
@@ -70,7 +79,7 @@ function SearchPage() {
                 <div className="search-results">
                     {searchResults.map((user, index) => (
                         <div key={index} className="user-item">
-                            <img src={`${baseURL}${user.profileImage}`} alt="프로필" className="user-profile-image" />
+                            <img src= {roomProfileImg(user,index)} alt="프로필" className="user-profile-image" />
                             <div className="user-info">
                                 <span className="user-nickname">{user.nickname}</span>
                             </div>

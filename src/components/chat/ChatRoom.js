@@ -32,7 +32,7 @@ const ChatRoom = ({ roomId,title, description, profileImg, date }) => {
     if(profileImg !== null && profileImg !== undefined){
       return <img key={roomId} src={profileImg} alt={`member-${roomId}`} />
     }
-    return <img key={roomId} src={"/imgs/defaultProfile.png"} alt={`member-${roomId}`} />
+    return <img key={roomId} src={require('../../images/default-profile.jpg')} alt={`member-${roomId}`} />
   }
 
   const formatDate = (dateArray) => {
