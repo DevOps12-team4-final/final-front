@@ -54,7 +54,8 @@ function SearchPage() {
         setSearchResults([]);
         setFocused(false);
     };
-
+    
+    
     return (
         <div id='search'>
             <div className='search-container'>
