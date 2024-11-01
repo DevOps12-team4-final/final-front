@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import axios from "axios";
 
 
-
 const ChatRoom = ({ roomId,title, description, profileImg, date }) => {
   const navi = useNavigate();
   const serverUrl ="http://localhost:9090/room"
@@ -32,7 +31,7 @@ const ChatRoom = ({ roomId,title, description, profileImg, date }) => {
     if(profileImg !== null && profileImg !== undefined){
       return <img key={roomId} src={profileImg} alt={`member-${roomId}`} />
     }
-    return <img key={roomId} src={"/imgs/defaultProfile.png"} alt={`member-${roomId}`} />
+    return <img key={roomId} src={require('../../images/default-profile.jpg')} alt={`member-${roomId}`} />
   }
 
   const formatDate = (dateArray) => {

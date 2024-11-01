@@ -98,7 +98,7 @@ const Chat = () => {
 
 
     return (
-        <>
+        <div style={{justifyContent: "center",display: "flex"}}>
             <Header title={roomId}/>
             <main className="chat-area">
                 <div className="chat-list" ref={chatListRef}>
@@ -122,7 +122,7 @@ const Chat = () => {
             </main>
             
             <ChatInput className="chat-input" send_message={send_message} send_file={send_file} roomId={roomId} userId={loginUserId}/>
-        </>
+        </div>
     );
 };
 

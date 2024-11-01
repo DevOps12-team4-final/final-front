@@ -60,7 +60,7 @@ const ChatBoard = () => {
 
 
   return (
-    <>
+    <div className='sort' style={{justifyContent: "center",display: "flex"}}>
     <Header/>
       <div className="chat-page">
         <div className="chat-room-list">
@@ -78,7 +78,7 @@ const ChatBoard = () => {
         {hasMore && <div className="loading">Loading...</div>} {/* 로딩 표시 */}
       </div>
     <Footer/>
-    </>
+    </div>
   );
 };
 
