@@ -16,7 +16,7 @@ function Footer({feedContentRef}) {
 };
 
   const handleSearchClick = () => {
-    navigate('/feedgrid');
+    navigate('/searchPage');
   };
 
   const handlepost = () => {

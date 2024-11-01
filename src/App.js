@@ -26,9 +26,9 @@ import FindTelInput from './pages/FindTelInput';
 import ResetPw from './pages/ResetPw';
 import MyPage from './pages/MyPage';
 import Feed from './pages/followingfeed/Feed';
-import FeedGrid from './pages/latesetfeed/FeedGrid';
 import Layout from './pages/layout';
 import SingleFeed from './pages/feed/SingleFeed';
+import SearchPage from './pages/SearchPage';
 // persistor 객체를 생성
 const persistor = persistStore(store);
 function App() {
@@ -50,7 +50,7 @@ function App() {
             <Route path="/posts" element={<Post />} />
             <Route path="/feeds" element={<Feed />} />
             <Route path="/MyPage" element={<MyPage />} />
-            <Route path="/feedgrid" element={<FeedGrid />} />
+            <Route path="/searchPage" element={<SearchPage />} />
             <Route path="/feed/:feedId" element={<SingleFeed />} />
             <Route path="/alarmList" element={<AlarmList />} />
             <Route path="/chatRoom/:roomId" element={<Chat />} />
