@@ -27,7 +27,8 @@ import ResetPw from './pages/ResetPw';
 import MyPage from './pages/MyPage';
 import Feed from './pages/followingfeed/Feed';
 import FeedGrid from './pages/latesetfeed/FeedGrid';
-import Footer from "./pages/frame/Footer"
+import Layout from './pages/layout';
+import SingleFeed from './pages/feed/SingleFeed';
 // persistor 객체를 생성
 const persistor = persistStore(store);
 function App() {
@@ -40,21 +41,23 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/join" element={<Join />} />
-          <Route path="/posts" element={<Post />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/jointelver" element={<JoinTelVer />} />
           <Route path="/findtelinput" element={<FindTelInput />}/>
           <Route path="/findcodever" element={<FindCodeVer />} />
           <Route path="/resetpw" element={<ResetPw />} />
-          <Route path="/feed" element={<Feed />} />
-          <Route path="/MyPage" element={<MyPage />} />
-          <Route path="/feedgrid" element={<FeedGrid />} />
-          <Route path="/AlarmList" element={<AlarmList />} />
-          <Route path="/Chat" element={<Chat />} />
-          <Route path="/ChatBoard" element={<ChatBoard />} />
-          <Route path="/ChatRoomSetting" element={<ChatRoomSetting />} />
-          <Route path="/Footer" element={<Footer />} />
-          <Route path="/mypage" element={<MyPage />} />
+          < Route element={<Layout/>}>
+            <Route path="/posts" element={<Post />} />
+            <Route path="/feeds" element={<Feed />} />
+            <Route path="/MyPage" element={<MyPage />} />
+            <Route path="/feedgrid" element={<FeedGrid />} />
+            <Route path="/feed/:feedId" element={<SingleFeed />} />
+            <Route path="/alarmList" element={<AlarmList />} />
+            <Route path="/chatRoom/:roomId" element={<Chat />} />
+            <Route path="/chatBoard" element={<ChatBoard />} />
+            <Route path="/ChatRoomSetting" element={<ChatRoomSetting />} />
+            <Route path="/mypage" element={<MyPage />} />
+          </Route>
         </Routes>
       </Router>
       </PersistGate>

@@ -8,7 +8,7 @@ import axios from "axios";
 const ChatRoom = ({ roomId,title, description, profileImg, date }) => {
   const navi = useNavigate();
   const serverUrl ="http://localhost:9090/room"
-  const LoginUserId = 1 //useSelector(state => state.memberSlice.id);
+  const LoginUserId = useSelector(state => state.userSlice.userId);
 
   const enterRoom = async () => {
     try {

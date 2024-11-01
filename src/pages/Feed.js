@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
-import { useLocation  } from 'react-router-dom';
+import { useLocation,useNavigate  } from 'react-router-dom';
 import Header from './frame/Header';
 import Footer from './frame/Footer';
 import CommentSection from './CommentSection'; // 새로 만든 댓글 컴포넌트 가져오기
@@ -36,6 +36,10 @@ function Feed() {
 
     const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
     const [activeFeedId, setActiveFeedId] = useState(null); // 현재 활성화된 댓글의 feedId
+
+    //이동용 navi
+    const navigate = useNavigate()
+
     // 모달 열기
     const openModal = (feedId) => {
         setActiveFeedId(feedId);
@@ -178,6 +182,16 @@ function Feed() {
         }
     }
 
+
+    //이동 하기 개별 Feed 페이지로
+    const naviFeed = (feedId) =>{
+        navigate(`/feed/${feedId}`)
+    }
+    //이동하기 유저페이지로
+    const naviUser = (userId) =>{
+        navigate(`/userPage/${userId}`)
+    }
+
   return (
     <div className='feed_container'>
         <Header />
@@ -187,9 +201,10 @@ function Feed() {
                 {/* <!-- 게시글 헤더 --> */}
                 <div className="feed_header">
                     <div className="user-info">
-                    <img
+                    <img 
                         src={`${baseURL}${feedItem.profileImage}`} 
                         alt="프로필 사진" 
+                        onClick={naviUser(feedItem.userId)}
                     />
                         <div>
                             <strong>{feedItem.nickname}</strong><br />

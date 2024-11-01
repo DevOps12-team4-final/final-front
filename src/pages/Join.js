@@ -402,75 +402,77 @@ function Join() {
 	};
 
   	return (
-		<form onSubmit={handleJoin} className="join_container">
-			<div className="join_logo">
-				Logo
-			</div>
-			<div className="join_text">빠르고 쉽게 가입할 수 있습니다.</div>
-			<div className="join_emailBox">
-				<input 
-					type="text" 
-					name="email"
-					placeholder={emailState.placeHolder}
-					value={userForm.email}
-					onChange={changeTextField}
-					onBlur={handleBlur}
-					className={emailState.error ? 'join_email_error' : 'join_email'}
-				/>
-			</div>
-			<div className="join_pwBox">
-				<input 
-					type="password" 
-					name="password"
-					placeholder={passwordState.placeHolder}
-					value={userForm.password}
-					onChange={changeTextField}
-					onBlur={handleBlur}
-					className={passwordState.error ? 'join_pw_error' : 'join_pw'}
-				/>
-			</div>
-			<div className="join_pwChkBox">
-				<input 
-					type="password" 
-					name="passwordCheck"
-					placeholder={passwordChkState.placeHolder}
-					value={userForm.passwordCheck}
-					onChange={changeTextField}
-					onBlur={handleBlur}
-					className={passwordChkState.error ? 'join_pwChk_error' : 'join_pwChk'}
-				/>
-			</div>
-			<div className="join_nicknameBox">
-				<input 
-					type="text" 
-					name="nickname"
-					placeholder={nicknameState.placeHolder}
-					value={userForm.nickname}
-					onChange={changeTextField}
-					onBlur={handleBlur}
-					className={nicknameState.error ? 'join_nickname_error' : 'join_nickname'}
-				/>
-			</div>
-			<div className="join_telBox">
-				<input 
-					type="text" 
-					name="tel"
-					placeholder={telState.placeHolder}
-					value={userForm.tel}
-					onChange={changeTextField}
-					onBlur={handleBlur}
-					className={telState.error ? 'join_tel_error' : 'join_tel'}
-				/>
-			</div>
-			<button type="submit" className="join_nextBtn">다음</button>
-	
-			{/* <div className="divider">
-				<hr className="left" />
-					<span>또는</span>
-				<hr className="right" />
-			</div> */}
-			<button type="button" onClick={handleLogin} className="join_loginBtn">로그인 페이지로 이동</button>
-		</form>
+		<div id='join_body'>
+			<form onSubmit={handleJoin} className="join_container">
+				<div className="join_logo">
+					Hi-we
+				</div>
+				<div className="join_text">빠르고 쉽게 가입할 수 있습니다.</div>
+				<div className="join_emailBox">
+					<input 
+						type="text" 
+						name="email"
+						placeholder={emailState.placeHolder}
+						value={userForm.email}
+						onChange={changeTextField}
+						onBlur={handleBlur}
+						className={emailState.error ? 'join_email_error' : 'join_email'}
+					/>
+				</div>
+				<div className="join_pwBox">
+					<input 
+						type="password" 
+						name="password"
+						placeholder={passwordState.placeHolder}
+						value={userForm.password}
+						onChange={changeTextField}
+						onBlur={handleBlur}
+						className={passwordState.error ? 'join_pw_error' : 'join_pw'}
+					/>
+				</div>
+				<div className="join_pwChkBox">
+					<input 
+						type="password" 
+						name="passwordCheck"
+						placeholder={passwordChkState.placeHolder}
+						value={userForm.passwordCheck}
+						onChange={changeTextField}
+						onBlur={handleBlur}
+						className={passwordChkState.error ? 'join_pwChk_error' : 'join_pwChk'}
+					/>
+				</div>
+				<div className="join_nicknameBox">
+					<input 
+						type="text" 
+						name="nickname"
+						placeholder={nicknameState.placeHolder}
+						value={userForm.nickname}
+						onChange={changeTextField}
+						onBlur={handleBlur}
+						className={nicknameState.error ? 'join_nickname_error' : 'join_nickname'}
+					/>
+				</div>
+				<div className="join_telBox">
+					<input 
+						type="text" 
+						name="tel"
+						placeholder={telState.placeHolder}
+						value={userForm.tel}
+						onChange={changeTextField}
+						onBlur={handleBlur}
+						className={telState.error ? 'join_tel_error' : 'join_tel'}
+					/>
+				</div>
+				<button type="submit" className="join_nextBtn">다음</button>
+		
+				{/* <div className="divider">
+					<hr className="left" />
+						<span>또는</span>
+					<hr className="right" />
+				</div> */}
+				<button type="button" onClick={handleLogin} className="join_loginBtn">로그인 페이지로 이동</button>
+			</form>
+		</div>
   	)
 }
 

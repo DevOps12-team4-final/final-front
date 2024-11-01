@@ -1,6 +1,6 @@
-import React, { useCallback,useState } from 'react';
+import React, { useCallback,useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch ,useSelector } from 'react-redux';
 import { login } from '../../apis/userApis';
 import '../../scss/Login.scss';
 
@@ -15,6 +15,17 @@ function Login() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loginUserId =   useSelector(state => state.userSlice.userId);
+
+  useEffect(()=>{
+    if(loginUserId != 0){
+      console.log(loginUserId)
+      //navigate(`/feeds`, { replace: true });
+    }
+    else{
+      console.log(loginUserId)
+    }
+  },[])
 
 
   const changeTextField = useCallback((e) => {
@@ -38,7 +49,7 @@ function Login() {
       console.log('로그인 응답 데이터: ', result);
 
       if(result){
-        navigate('/feed', {state: result.item});
+        navigate('/feeds', {state: result.item});
         console.log('로그인 성공');
       }
     } catch(error){
@@ -61,7 +72,7 @@ function Login() {
     <div id='login_body'>
       <form onSubmit={handleLogin} className='login_container'>
           <div className="login_logo">
-              <p>Logo</p>
+              <p>Hi-we</p>
           </div>
           <div className='login_emailBox'>
               <input 

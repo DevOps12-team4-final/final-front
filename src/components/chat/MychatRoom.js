@@ -6,7 +6,7 @@ import axios from "axios";
 const MyChatRoom = ({ roomId, title, description, profileImg, date }) => {
   const navi = useNavigate();
   const serverUrl = "http://localhost:9090/room";
-  const LoginUserId = 1; // useSelector(state => state.memberSlice.id);
+  const LoginUserId = useSelector(state => state.memberSlice.userId);
   const [MyProfile, setProfile] = useState(null);
   const [MyTitle, setTitle] = useState(title);
   const [MyDescription, setDescription] = useState(description);

@@ -8,20 +8,12 @@ const userSlice = createSlice({
     
     name: 'users',
     initialState: {
-        isLogin: false,
-        // 로그인한 사용자 id 저장
-        userId: 0,
-        // 로그인한 사용자 email 저장
-        email: '',
-        nickname: '',
-        tel: '',
-
-        role:'',
-
-        profileImage:'',
-
-
-
+        isLogin: sessionStorage.getItem('ACCESS_TOKEN') ? true : false,
+        id: sessionStorage.getItem('USER_ID') || 0,
+        email: sessionStorage.getItem('USER_EMAIL') || '',
+        nickname: sessionStorage.getItem('USER_NICKNAME') || '',
+        tel: sessionStorage.getItem('USER_TEL') || '',
+        profileImage: sessionStorage.getItem('USER_PROFILE_IMAGE') || ''
     },
     // 상태 변경은 모두 비동기 액션을 처리하는 extraReducers에서 이루어진다.
     reducers: {
@@ -50,7 +42,7 @@ const userSlice = createSlice({
         builder.addCase(login.fulfilled, (state, action) => {
             alert(`${action.payload.item.nickname}님 환영합니다.`);
             sessionStorage.setItem('ACCESS_TOKEN', action.payload.item.token);
-            sessionStorage.setItem('userId', action.payload.item.userid);
+            sessionStorage.setItem('userId', action.payload.item.userId);
             sessionStorage.setItem('nickname', action.payload.item.nickname)
             sessionStorage.setItem('profileImage',action.payload.item.profileImage)
             sessionStorage.setItem('role', action.payload.item.role)
@@ -66,7 +58,7 @@ const userSlice = createSlice({
             return {
                 ...state,
                 isLogin: true,
-                userId: action.payload.item.userid,
+                userId: action.payload.item.userId,
                 email: action.payload.item.email,
                 nickname: action.payload.item.nickname,
                 tel: action.payload.item.tel,

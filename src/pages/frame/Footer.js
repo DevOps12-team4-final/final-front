@@ -1,13 +1,19 @@
 import React from 'react'
 import '../../scss/framescss/Footer.scss';
 import { useNavigate } from 'react-router-dom';
-function Footer({profileImage}) {
-
+import { useSelector } from 'react-redux';
+function Footer({feedContentRef}) {
+  
   const navigate = useNavigate();
+  const profileImage = useSelector(state => state.userSlice.profileImage)
 
   const handleHomeClick = () => {
     navigate('/feed');
-  };
+
+    if(feedContentRef != null && feedContentRef != undefined &&  feedContentRef.current){
+        feedContentRef.current.scrollTop = 0;
+    }
+};
 
   const handleSearchClick = () => {
     navigate('/feedgrid');
@@ -19,7 +25,7 @@ function Footer({profileImage}) {
 
 
     const handlechat = () => {
-    navigate('/chat');
+    navigate('/chatBoard');
   };
   
   const handleMyPageClick = () => {

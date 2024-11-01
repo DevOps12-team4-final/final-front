@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDrag } from "react-dnd";
 
 const DRAG_THRESHOLD = -100;
 
-const AlarmBox = ({ userId, type, targetId, message, index, naviAlarm, removeAlarm }) => {
-  const LoginUserId = 1 // useSelector(state => state.memberSlice.id);
+const AlarmBox = ({ nickname, type, targetId, message, index, naviAlarm, removeAlarm }) => {
+  const LoginUserId = useSelector(state => state.userSlice.userId);
   const serverUrl = "http://localhost:9090/room";
   
   const [alarmId ,setAlarmId] = useState(index)
@@ -29,7 +30,7 @@ const AlarmBox = ({ userId, type, targetId, message, index, naviAlarm, removeAla
         // 알림을 화면 밖으로 애니메이션 적용 후 제거
         setIsRemoving(true);
         setTimeout(() => {
-          removeAlarm(item.index); // 애니메이션 후 실제 삭제
+          removeAlarm(); // 애니메이션 후 실제 삭제
           setIsRemoving(false);
         }, 400); // 300ms는 애니메이션 시간과 맞춤
         
@@ -50,10 +51,7 @@ const AlarmBox = ({ userId, type, targetId, message, index, naviAlarm, removeAla
 
   const alarmDescription = () => {
     if (type === "chat") {
-      return message;
-    }
-    if (type === "feed") {
-      return `${userId}님의 새 게시글이 올라왔어요`;
+      return `${nickname}: ${message}`;
     }
     return message;
   };

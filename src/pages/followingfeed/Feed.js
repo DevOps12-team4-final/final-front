@@ -7,6 +7,7 @@ import '../../scss/Feed.scss';
 import FeedHeader from './FeedHeader';
 import FeedContent from './FeedContent';
 import FeedFooter from './FeedFooter';
+import CommentSection from '../CommentSection'; // 새로 만든 댓글 컴포넌트 가져오기
 
 function Feed() {
 
@@ -35,15 +36,38 @@ function Feed() {
     const [loading, setLoading] = useState(false);
     const [hasNextPage, setHasNextPage] = useState(false);
     const observerRef = useRef();
+    
+    const [isBlocked, setIsBlocked] = useState(false); 
+    const feedContentRef = useRef(null);
 
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isChatOpen, setIsChatlOpen] = useState(false);
+    const [activeFeedId, setActiveFeedId] = useState();
+    
+    // 모달 열기
+    const openChatModal = (feedId) => {
+        setActiveFeedId(feedId);
+        setIsChatlOpen(true);
+    };
+    const closeChatModal = () => {
+        setIsChatlOpen(false);
+    };
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     const fetchFeed = useCallback(async(page) => {
         setLoading(true);
 
         try{
             const token = sessionStorage.getItem('ACCESS_TOKEN');
-            // const response = await fetch(`/feeds/following?page=${page}&size=10`, {
-                const response = await fetch(`/feeds/following`, {
+                const response = await fetch(`/feeds/latest?page=${page}&size=10`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -66,6 +90,40 @@ function Feed() {
             setLoading(false);
         }
     },[]);
+
+    const handleBlockToggle = async (userId) => {
+        const token = sessionStorage.getItem('ACCESS_TOKEN');
+        try {
+            if (isBlocked) {
+                // 차단 해제 요청
+                const response = await fetch(`/blocks/${userId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (response.ok) {
+                    setIsBlocked(false);
+                }
+            } else {
+                // 차단 요청
+                const response = await fetch(`/blocks`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ userId }),
+                });
+                if (response.ok) {
+                    setIsBlocked(true);
+                }
+            }
+        } catch (error) {
+            console.error("차단/차단 해제 실패:", error);
+        }
+    };
 
     // 중복된feedId를 가진 항목을 필터링
     const uniqueFeeds = feed.filter((feedItem, index, self) => 
@@ -95,7 +153,7 @@ function Feed() {
     useEffect(()=>{
         console.log(profileImage);
         fetchFeed(page);
-    }, [page, fetchFeed, profileImage]);
+    }, [page, fetchFeed]);
 
     // 슬라이드 점 네비게이션 클릭 시 동작
     const goToSlide = (feedIndex, imageIndex) => {
@@ -134,6 +192,7 @@ function Feed() {
         setStartX(0);
     };
 
+
     useEffect(() => {
         if (feed.length > 0) {
             setCurrentIndexes(new Array(feed.length).fill(0)); // 각 게시물에 대해 슬라이드 인덱스를 0으로 초기화
@@ -153,17 +212,19 @@ function Feed() {
     <div id='feed'>
          
             <Header />
-        
-        <div className='feed_container'>
+      
            
-            <main className="feed_content_box">
+        <main className="feed_content_box" ref={feedContentRef}>
                 {uniqueFeeds && uniqueFeeds.length > 0 && uniqueFeeds.map((feedItem, feedIndex) => (
                 <div key={feedItem.feedId} className="feed_box">
                     <FeedHeader 
                         profileImage={`${baseURL}${feedItem.profileImage}`}
+                        userId={feedItem.userId}
+                        isFollowing={feedItem.following}
                         nickname={feedItem.nickname}
-                        regdate={feedItem.regdate}
-                    />     
+                        regdate={feedItem.regdate} 
+                        onMoreClick={toggleModal} 
+                    />  
 
                     <FeedContent 
                         content={feedItem.content}
@@ -176,9 +237,35 @@ function Feed() {
                         isDragging={isDragging}
                     />
                 
-                    <FeedFooter feedId={feedItem.feedId} initialLikeCount={feedItem.likeCount} />
+                    <FeedFooter feedId={feedItem.feedId} initialLikeCount={feedItem.likeCount} onChatClick={openChatModal} />
                 </div>
                 ))}
+                {/*차단모달*/}
+                {isModalOpen && (
+                    <>
+                        <div className="modal_overlay" onClick={closeModal}></div>
+                        <div className={`slide_modal ${isModalOpen ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
+                            <div className="modal_content">
+                                <button onClick={() => handleBlockToggle(feed[0].userId)}>
+                                    {isBlocked ? "차단 해제" : "계정 차단"}
+                                </button>
+                                <button onClick={() => console.log("신고")}>신고</button>
+                            </div>
+                        </div>
+                    </>
+                )}
+
+                {/* 댓글 모달 */}
+                {isChatOpen && (
+                     <div className="modal_overlay" onClick={closeChatModal}>
+                        <div className="modal_content" onClick={(e) => e.stopPropagation()}>
+                        <span className="close-modal" onClick={closeChatModal}>X</span>
+                        {/* 댓글 섹션 모달 */}
+                        <CommentSection feedId={activeFeedId} />
+                        </div>
+                     </div>
+                )}
+
                 {/* 삼항 연산자로 spinner를 조건부 렌더링 */}
                 {hasNextPage ? (
                     <div className='spinner-container'>
@@ -186,10 +273,9 @@ function Feed() {
                     </div>
                 ) : null}
             </main>
-            <Footer profileImage={profileImage} />
+            <Footer profileImage={profileImage} feedContentRef={feedContentRef} />
 
         </div>
-    </div>
   )
 }
 

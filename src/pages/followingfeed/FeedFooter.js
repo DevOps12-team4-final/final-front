@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import '../../scss/framescss/Footer.scss';
 
-function FeedFooter({ initialLikeCount, feedId }) {
+function FeedFooter({ initialLikeCount, feedId, onChatClick }) {
 
     const [likeCount, setLikeCount] = useState(initialLikeCount);
     const [isHeartFilled, setIsHeartFilled] = useState(false);
@@ -10,25 +10,25 @@ function FeedFooter({ initialLikeCount, feedId }) {
 
     useEffect(() => {
         // 초기 좋아요 수 및 사용자가 좋아요를 눌렀는지 여부 확인
-        fetch(`/feeds/${feedId}/like-count`, {
-            headers: { 'Authorization': `Bearer ${sessionStorage.getItem('ACCESS_TOKEN')}` }
-        })
-            .then(response => response.json())
-            .then(data => {
-                setLikeCount(data.item.likeCount);
-                setIsHeartFilled(data.item.isLiked);
-            })
-            .catch(error => console.log('Error fetching like count:', error));
+        // fetch(`/feeds/${feedId}/like-count`, {
+        //     headers: { 'Authorization': `Bearer ${sessionStorage.getItem('ACCESS_TOKEN')}` }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         setLikeCount(data.item.likeCount);
+        //         setIsHeartFilled(data.item.isLiked);
+        //     })
+        //     .catch(error => console.log('Error fetching like count:', error));
 
-            // 북마크 상태 가져오기
-        fetch(`/bookMarks/${feedId}`, { // 북마크 상태만 반환하는 엔드포인트
-            headers: { 'Authorization': `Bearer ${sessionStorage.getItem('ACCESS_TOKEN')}` }
-        })
-            .then(response => response.json())
-            .then(data => {
-                setIsBookmarkFilled(data.item.isMarked); // 북마크 여부 설정
-            })
-            .catch(error => console.log('Error fetching bookmark status:', error));
+        //     // 북마크 상태 가져오기
+        // fetch(`/bookMarks/${feedId}`, { // 북마크 상태만 반환하는 엔드포인트
+        //     headers: { 'Authorization': `Bearer ${sessionStorage.getItem('ACCESS_TOKEN')}` }
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         setIsBookmarkFilled(data.item.isMarked); // 북마크 여부 설정
+        //     })
+        //     .catch(error => console.log('Error fetching bookmark status:', error));
     }, [feedId]);
 
     const toggleHeart = () => {
@@ -128,7 +128,10 @@ function FeedFooter({ initialLikeCount, feedId }) {
                 </div>
                 <div>
                     <button className='feedFooter_icon_button'>
-                        <span className="material-icons">comment</span>
+                        <span 
+                            className="material-icons"
+                            onClick={()=>{onChatClick(feedId)}}
+                            >comment</span>
                     </button>
                 </div>
                 <div>

@@ -40,9 +40,8 @@ function FeedGrid() {
                 );
                 return [...prevFeed, ...newFeeds];
             });
-            setHasNextPage(data.item.page.number < data.item.page.totalPages);
-
             console.log("data", data);
+            setHasNextPage(data.item.pageable.pageNumber < data.item.totalPages);
         }catch(error){
             console.log("error", error);
         }finally {
@@ -76,6 +75,9 @@ function FeedGrid() {
 
     const { profileImage } = useSelector((state) => state.userSlice || {});
 
+    useEffect(()=>{
+       console.log(feed)
+    },[feed])
 
     
     return (
@@ -83,11 +85,11 @@ function FeedGrid() {
         <div className='feedgrid_container'>
             <Header />
                 <main className='feedgrid_content_box'>
-                    {uniqueFeeds && uniqueFeeds.length > 0 && uniqueFeeds.map((feedItem) => ( 
-                        <div key={feedItem.feedId} className='feedgrid_box'>
+                    {feed && feed.length > 0 && feed.map((feedItem) => ( 
+                        <div key={feedItem.feedId} className={`feedgrid_box ${feedItem.feedId}`}>
                             {feedItem.feedFileDtoList.length > 0 && (
                                 <img
-                                    src={`${baseURL}${feedItem.feedFileDtoList[0].filepath}${feedItem.feedFileDtoList[0].newfilename}`}
+                                    src={`${baseURL}${feedItem.feedFileDtoList[0].filepath}${feedItem.feedFileDtoList[0].filename}`}
                                     alt={`Feed by ${feed.nickname}`}
                                     className='feedgrid_image'
                                 />

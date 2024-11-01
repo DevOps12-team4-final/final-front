@@ -2,9 +2,9 @@ import React, { useEffect, useState, useCallback } from 'react';
 import ChatRoom from '../../components/chat/ChatRoom';
 import axios from "axios";
 import '../../scss/chat/chatBoard.scss';
-import Header from '../../components/frame/Header';
-import Footer from '../../components/frame/Footer';
-import useAlarmWebSocket from '../../components/frame/useAlarmWebSocket';
+import Header from '../../pages/frame/Header';
+import Footer from '../../pages/frame/Footer';
+
 
 const ChatBoard = () => {
   const [chatRooms, setChatRooms] = useState([]);
@@ -16,6 +16,7 @@ const ChatBoard = () => {
   //useAlarmWebSocket()
   
   useEffect(() => {
+    
     fetchData(page); // 초기 데이터 로드
   }, [page]); // page가 변경될 때마다 fetchData 호출
   

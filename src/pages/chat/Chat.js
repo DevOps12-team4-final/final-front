@@ -1,6 +1,7 @@
 // ChatRoom.js
 import React, { useEffect, useState ,useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import ChatBox from '../../components/chat/ChatBox';
 import ChatInput from '../../components/chat/ChatInput';
 import { enterRoom } from '../../apis/chatApi';
@@ -8,30 +9,27 @@ import { useParams } from 'react-router-dom';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import '../../scss/chat/chatRoom.scss';
-import Header from '../../components/frame/Header';
+import Header from '../../pages/frame/Header';
 import {sendFileToRoom} from '../../apis/chatApi'
-import useAlarmWebSocket from '../../components/frame/useAlarmWebSocket';
 
 
-//test
-const test_messages = [
-    { id: 1, message: '비트캠프유안인', Type:"" ,  createdAt: '2024.09.23', userId: false },
-    { id: 2, message: '운동 해요지',  Type:"" ,createdAt: '2024.09.23', userId: true },
-    { id: 3, message: '비트캠프유안인',  Type:"" ,createdAt: '2024.09.24', userId: false },
-    { id: 4, message: '운동 해요지', Type:"" ,createdAt: '2024.09.24', userId: true },
-];
+
 
 const Chat = () => {
     const stompClientRef = useRef(null);
     const chatListRef = useRef(null)
     const {roomId} = useParams();
-    const loginUserId =  1// useSelector(state => state.memberSlice.id);
+    const loginUserId =   useSelector(state => state.userSlice.userId);
     const [messages,setMessage] = useState([]);
     const[isSideOpen,setIsSideOpen] = useState([]);
+    const navi = useNavigate();
     //useAlarmWebSocket()
 
     useEffect(()=>{
         //방 입장
+        console.log("userId: "+loginUserId)
+        if(loginUserId  == 0)
+            return
         getChats()
         const socket = new SockJS('http://localhost:9090/ws');
         const stompClient = Stomp.over(socket);
@@ -71,7 +69,15 @@ const Chat = () => {
     const getChats= async ()=>{
         const res =  await enterRoom(roomId,loginUserId);
         console.log(res.data.items)
-        setMessage(res.data.items)
+        if(res.data.items == null){
+            //not followed
+            navi("/chatBoard")
+            //setMessage([])
+        }
+        else{
+            setMessage(res.data.items)
+        }
+        
     }
 
     const scrollToBottom = () => {
@@ -81,6 +87,7 @@ const Chat = () => {
         }
     };
     const send_message = async (test_chat) =>{
+        console.log(test_chat)
         stompClientRef.current.send("/app/send", {}, JSON.stringify(test_chat));    
     }
     const send_file = async(formData) =>{
@@ -92,7 +99,7 @@ const Chat = () => {
 
     return (
         <>
-            <Header />
+            <Header title={roomId}/>
             <main className="chat-area">
                 <div className="chat-list" ref={chatListRef}>
                     {messages.map((chat, index) => {
@@ -115,7 +122,6 @@ const Chat = () => {
             </main>
             
             <ChatInput className="chat-input" send_message={send_message} send_file={send_file} roomId={roomId} userId={loginUserId}/>
-            
         </>
     );
 };

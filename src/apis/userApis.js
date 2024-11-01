@@ -53,7 +53,7 @@ export const logout = createAsyncThunk(
       if (!token) {
         throw new Error("No token found");
       }
-      const response = await axios.get(`/members/logout`, {
+      const response = await axios.get(`/users/logout`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

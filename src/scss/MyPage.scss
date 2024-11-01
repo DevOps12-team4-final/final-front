@@ -44,7 +44,7 @@
 }
 
 .user-image {
-    background-color: #7f3fa1;
+    background-color: #ffffff;
     width: 9ch;
     height: 9ch;
     display: inline-block;
@@ -184,30 +184,27 @@
 }
 
 
-.bar-content-frame {
+.bar-content-grid-container {
     width: 375px;
     height: 20vh;
     background-color: #ffffff; 
     text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 1px;
 }
 
-.feed1 {
-    border: 1px solid rgb(122, 81, 209);
-    width: 120px;
+.grid-item {
+    width: 110px;
     height: 120px;
     display: inline-block;
 
+    background-color: #ffffff;
+    width: 100%;
+    position: relative;
 }
-.feed2 {
-    border: 1px solid rgb(122, 81, 209);
-    width: 120px;
-    height: 120px;
-    display: inline-block;
 
-}
-.feed3 {
-    border: 1px solid rgb(122, 81, 209);
-    width: 120px;
-    height: 120px;
-    display: inline-block;
+.grid-item::after {
+    content: "";
+    display: block;
 }

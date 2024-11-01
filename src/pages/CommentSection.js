@@ -82,7 +82,7 @@ function CommentSection({ feedId }) {
                     feedId,
                     comment: newComment,
                     profileImage,
-                    nickname
+                    //nickname
                 })
             });
     

@@ -33,9 +33,9 @@ export const createRoom = async (roomData) =>{
     }
  }
 
- export const enterRoom = async (roomId, userId) => {
+ export const enterRoom = async (room_Id, userId) => {
     try {
-        const response = await axios.get(`${searverUrl}/enter/${roomId}`, {
+        const response = await axios.get(`${searverUrl}/enter/${room_Id}`, {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem('ACCESS_TOKEN')}`,
             },

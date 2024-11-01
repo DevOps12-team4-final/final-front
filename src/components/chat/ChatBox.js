@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 const ChatBox = ({ chat ,flag }) => {
-  const LoginUserId = 1 // useSelector(state => state.memberSlice.id);
+  const LoginUserId =  useSelector(state => state.userSlice.userId);
   
   const showMessage =() =>{
     if(chat.type == "chat"){
@@ -25,7 +25,7 @@ const ChatBox = ({ chat ,flag }) => {
   }
     
   return (
-    <div className={`chat-item ${chat.userId === LoginUserId ? 'received' : 'sent'}`} >    
+    <div className={`chat-item ${chat.userId === LoginUserId ? 'sent' : 'received'} ${chat.userId}`} >    
       <div className="chat-content">
         <div className="chat-user">{chat.username}</div>
         {showMessage()}

@@ -1,18 +1,50 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { get,remove } from '../apis/alarmApi';
 
 const alarmSlice = createSlice({
   name: 'messages',
-  initialState: [],
+  initialState: {
+    isGetInit: false,
+    alarms:[]
+  },
   reducers: {
     addMessage: (state, action) => {
       console.log(state)
-      state.unshift()(action.payload); // 받은 메시지를 배열의 앞에 추가
+      state.alarms.unshift()(action.payload); // 받은 메시지를 배열의 앞에 추가
     },
-    removeMessage: (state, action) => {
-        return state.filter((message) => message.id !== action.payload); // id를 기준으로 메시지 제거
-      },
   },
+
+  extraReducers: (builder) => {
+
+    // builder.addCase는 특정 액션이 발생했을 때, 그 액션에 대한 상태 업데이트를 정의해주는 함수이다.
+    // state = 현재상태
+    // action = dipatch(join),createAsyncThunk로 생성된 액션
+
+    // 값가져오기
+    builder.addCase(get.fulfilled, (state, action) => {
+        //item 필터링 시도
+        console.log(action.payload)
+        state.alarms = action.payload
+        return state;
+    });
+    builder.addCase(get.rejected, (state, action) => {
+        return state;
+    });
+
+    //알람 지우기
+    builder.addCase(remove.fulfilled, (state, action) => {
+        
+        return {
+            ...state,
+            alarms: state.alarms.filter((message) => message.id !== action.payload)
+        };
+    });
+    builder.addCase(remove.rejected, (state, action) => {
+        return state;
+    });
+  }
+
 });
 
-export const { addMessage, removeMessage  } = alarmSlice.actions;
+export const { addMessage} = alarmSlice.actions;
 export default alarmSlice.reducer;

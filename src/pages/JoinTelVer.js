@@ -92,20 +92,21 @@ function JoinTelVer() {
 
     
   return (
+    <div id='jtv_body'>
     <form className="jtv_container" onSubmit={handleVerification}>
         <div className="jtv_logo">
-            <p>Logo</p>
+            <p>Hi-we</p>
         </div>
         <div className="jtv_text">{`${userForm.tel}로 전송된 6자리 코드를 입력하세요`}</div>
         <div className="jtv_chkNumBox">
-          <input 
+        <input 
             type="text" 
             name="chkNum"
             placeholder='인증번호'
             value={inputCode}
             onChange={handleChange}
             className="jtv_chkNum"
-          />
+        />
         </div>
         <button type="submit" className="jtv_join">가입하기</button>
         <button type='button' className="jtv_newCode" onClick={handleResendCode}>새 코드 요청하기</button>
@@ -115,7 +116,8 @@ function JoinTelVer() {
             <hr class="right" />
         </div>
         <button type="button" className="jtv_back" onClick={handleBack}>돌아가기</button>
-      </form> 
+    </form> 
+  </div>
   )
 }
 

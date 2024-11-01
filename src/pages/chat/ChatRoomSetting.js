@@ -1,8 +1,8 @@
 import React from 'react'
 import  MyChatRoom from '../../components/chat/MychatRoom'
 import '../../scss/chat/chatSetting.scss';
-import Header from '../../components/frame/Header';
-import Footer from '../../components/frame/Footer';
+import Header from '../../pages/frame/Header';
+import Footer from '../../pages/frame/Footer';
 //내 챗룸 1개 가져와서  파라미터 수정하기
 const ChatRoomSetting = () => {
   //내꺼 chatRoom 가져오기 

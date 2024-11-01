@@ -1,6 +1,6 @@
-import React, { useCallback,useState } from 'react';
+import React, { useCallback,useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../apis/userApis';
 import '../scss/Login.scss';
 
@@ -15,8 +15,18 @@ function Login() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loginUserId =   useSelector(state => state.userSlice.userId);
 
-
+  useEffect(()=>{
+    if(loginUserId != 0){
+      console.log(loginUserId)
+      navigate(`/feeds`, { replace: true });
+    }
+    else{
+      console.log(loginUserId)
+    }
+  },[])
+  
   const changeTextField = useCallback((e) => {
     setUserForm({
         ...userForm,
@@ -38,7 +48,7 @@ function Login() {
       console.log('로그인 응답 데이터: ', result);
 
       if(result){
-        navigate('/feed', {state: result.item});
+        navigate('/feeds', {state: result.item});
         console.log('로그인 성공');
       }
     } catch(error){
@@ -59,33 +69,32 @@ function Login() {
 
   return (
     <div id='login_body'>
-    <form onSubmit={handleLogin} className='login_container'>
-        <div className="login_logo">
-            <p>Logo</p>
-        </div>
-        <div className='login_emailBox'>
-            <input 
-                className='login_email'
-                type="text" 
-                name="email"
-                value={userForm.email} 
-                onChange={changeTextField}
-                placeholder='이메일'
-            />
-        </div>
-        <div className='login_passwordBox'>
-            <input 
-                className='login_password'
-                type="password" 
-                name="password"
-                value={userForm.password} 
-                onChange={changeTextField} 
-                placeholder='비밀번호'
-            />
-        </div>
-        <button type="submit" className='login_loginBtn'>로그인</button>
-        <button type='button' className='login_pwFindBtn' onClick={handleFindUser}>비밀번호를 잊으셨나요?</button>
-
+     <form onSubmit={handleLogin} className='login_container'>
+          <div className="login_logo">
+              <p>Hi-we</p>
+          </div>
+          <div className='login_emailBox'>
+              <input 
+                  className='login_email'
+                  type="text" 
+                  name="email"
+                  value={userForm.email} 
+                  onChange={changeTextField}
+                  placeholder='이메일'
+              />
+          </div>
+          <div className='login_passwordBox'>
+              <input 
+                  className='login_password'
+                  type="password" 
+                  name="password"
+                  value={userForm.password} 
+                  onChange={changeTextField} 
+                  placeholder='비밀번호'
+              />
+          </div>
+          <button type="submit" className='login_loginBtn'>로그인</button>
+          <button type='button' className='login_pwFindBtn' onClick={handleFindUser}>비밀번호를 잊으셨나요?</button>
         {/* '또는' 부분 */}
         <div className="divider">
             <hr className="left" />
