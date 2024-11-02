@@ -16,21 +16,19 @@ $text-color-light: #999;
   // Chat Area
   .chat-area {
     margin-top: 4rem;
-    margin-bottom: 5rem;
+    margin-bottom: 6rem;
     display: flex;
     flex-direction: column;
     justify-content:right;
     height: 85vh;
     padding: $padding;
-  
+    width: auto;
     .chat-list {
       flex: 1;
       height: inherit;
       // overflow-y: auto;
+      margin-bottom:3rem;
 
-      width: auto;
-
-      margin-bottom: 5rem;
     }
   }
 

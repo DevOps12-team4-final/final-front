@@ -98,7 +98,7 @@ const Chat = () => {
 
 
     return (
-        <div style={{justifyContent: "center",display: "flex"}}>
+        <div >
             <Header title={roomId}/>
             <main className="chat-area">
                 <div className="chat-list" ref={chatListRef}>

@@ -21,7 +21,7 @@ const ChatBox = ({ chat ,flag }) => {
     {
       return <img src={chat.profileImage} alt="profile" className={imgClass} />
     }
-    return <img src={"/imgs/defaultProfile.png"} alt="profile" className={imgClass} />
+    return <img  src={require('../../images/default-profile.jpg')} alt="profile" className={imgClass} />
   }
     
   return (

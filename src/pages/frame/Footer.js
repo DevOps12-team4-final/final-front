@@ -8,7 +8,7 @@ function Footer({feedContentRef}) {
   const profileImage = useSelector(state => state.userSlice.profileImage)
 
   const handleHomeClick = () => {
-    navigate('/feed');
+    navigate('/feeds');
 
     if(feedContentRef != null && feedContentRef != undefined &&  feedContentRef.current){
         feedContentRef.current.scrollTop = 0;
