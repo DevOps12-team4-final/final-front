@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { get,remove } from '../apis/alarmApi';
+import { logout  } from '../apis/userApis';
 
 const alarmSlice = createSlice({
   name: 'messages',
@@ -32,6 +33,8 @@ const alarmSlice = createSlice({
         return state;
     });
     builder.addCase(get.rejected, (state, action) => {
+        console.log("try once")
+        console.log(action.payload)
         return state;
     });
 
@@ -52,6 +55,12 @@ const alarmSlice = createSlice({
         console.log("fail")
         return state;
     });
+    //로그아웃 비우기
+     builder.addCase(logout.fulfilled,(state,action) =>{
+      state.alarms =[]
+      state.isGetInit = false
+      return state
+     })
   }
 
 });

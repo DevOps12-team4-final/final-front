@@ -1,7 +1,8 @@
 /* 댓글 섹션 */
 .comment_section {
     width: 100%;
-    margin-top: 10px;
+    height: 500px;
+    margin-top: 50px;
     padding: 10px 20px;
     box-sizing: border-box;
     background-color: #fff; /* 댓글 창 배경 */
@@ -31,7 +32,7 @@
     list-style: none;
     padding: 0;
     margin: 10px 0;
-    height: 400px;
+    height: 325px;
     overflow-y: auto; /* 스크롤 가능 */
     scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
 }

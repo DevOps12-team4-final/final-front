@@ -18,8 +18,9 @@ export const get = createAsyncThunk(
       const response = await axios.get(`${searverUrl}/user/${userId}`);
       const dataList =  response.data.item
       const returnList = [];
+      console.log(response.data.item)
       for (const data of dataList) {
-        const message = JSON.parse(data.alarmContent)
+        const message = JSON.parse(data.message)
         returnList.push(message);
       }
       return returnList;

@@ -5,6 +5,7 @@ import { addMessage } from '../slices/alarmSlice'; // 메시지를 관리할 sli
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 import { useEffect } from 'react'
+import { get } from '../apis/alarmApi';
 const Layout = () => {
   //Alamrsocket 넣기 소켓에서 데이터 받고 처리하기
   const url ='http://localhost:9090/ws/api'
@@ -35,7 +36,11 @@ const Layout = () => {
             console.log("DISCONNECT")
             stompClient.disconnect();
         };
+        //getAlars
+        dispatch(get(LoginUserId ));
   }, []);
+
+  
 
   return (
     <>

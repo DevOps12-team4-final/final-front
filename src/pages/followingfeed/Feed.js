@@ -262,7 +262,7 @@ function Feed() {
                         <div className="modal_content" onClick={(e) => e.stopPropagation()}>
                         <span className="close-modal" onClick={closeChatModal}>X</span>
                         {/* 댓글 섹션 모달 */}
-                        <CommentSection feedId={activeFeedId} />
+                        <CommentSection feedId={activeFeedId} closeModal={closeChatModal} />
                         </div>
                      </div>
                 )}

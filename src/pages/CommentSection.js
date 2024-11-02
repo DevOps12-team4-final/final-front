@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState,useRef } from 'react';
 import '../scss/CommentSection.scss'; // 스타일 파일을 제대로 임포트
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -9,6 +9,8 @@ function CommentSection({ feedId, closeModal }) { // closeModal 추가
 
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
+    const commentListRef = useRef(null)
+    const [first,setFirst] = useState(true);
 
     // Redux에서 nickname과 profileImage 가져오기
     const nickname = useSelector(state => state.userSlice.nickname);
@@ -96,18 +98,48 @@ function CommentSection({ feedId, closeModal }) { // closeModal 추가
             alert('댓글 작성에 실패했습니다.');
         }
     };
+    
 
+    //댓글 위치
     const roomProfileImg = (user, index) => {
-        if (user.profileImage) {
+        if (user.profileImage != null || user.profileImage != undefined) {
             return `${baseURL}${user.profileImage}`;
         }
-        return ('defaultProfileImage'); // 기본 프로필 이미지
+        return require('../images/default-profile.jpg'); // 기본 프로필 이미지
     };
+
+    const scrollToBottom = () => {
+        if (commentListRef.current) {
+            console.log("i tryed")
+            commentListRef.current.scrollTop = commentListRef.current.scrollHeight;
+        }
+    };
+
+    useEffect(()=>{
+        if(first == false){
+            scrollToBottom()   
+        }else{
+            setFirst(false)
+        }
+    },[comments])
 
     return (
         <div className="comment_section">
+            <div className="comment_input_container">
+                <textarea
+                    className="comment_input"
+                    value={newComment}
+                    onChange={handleInputChange}
+                    placeholder="댓글 달기..."
+            />
+             <button
+                    type="submit"
+                    className={`send-button ${!newComment.trim() ? 'disabled' : ''}`}
+                    onClick={handleCommentSubmit}
+                    disabled={!newComment.trim()}
+                >게시</button>
             {/* 댓글 목록 */}
-            <ul className="comment_list">
+            <ul className="comment_list" ref={commentListRef}>
                 {comments.length > 0 ? (
                     comments.map((comment, index) => (
                         <li key={index} className="comment_item">
@@ -125,20 +157,9 @@ function CommentSection({ feedId, closeModal }) { // closeModal 추가
                 )}
             </ul>
 
-            <div className="comment_input_container">
-                <textarea
-                    className="comment_input"
-                    value={newComment}
-                    onChange={handleInputChange}
-                    placeholder="댓글 달기..."
-                />
-                <button
-                    type="submit"
-                    className={`send-button ${!newComment.trim() ? 'disabled' : ''}`}
-                    onClick={handleCommentSubmit}
-                    disabled={!newComment.trim()}
-                >게시</button>
-                <button className="close-button" onClick={(e)=>e.closeModal}> 
+            
+               
+                <button className="close-button" onClick={closeModal}> 
                     닫기
                 </button>
             </div>
