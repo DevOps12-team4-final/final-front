@@ -14,13 +14,13 @@ $text-color-light: #999;
   
 
   .alarm-page {
-    padding: '1rem';
+    padding: 1rem;
     height: 100%;
     position: relative;
-    margin-top: 9rem;
+    margin-top: 4rem;
     padding-bottom: 4rem;
     .alarm-list {  
-      overflow: auto; 
+      overflow-y: auto;
     }
   
 
@@ -42,8 +42,7 @@ $text-color-light: #999;
       margin-right: 1rem;
   
       img {
-        width: 5rem;
-        height: 5rem;
+        
         border-radius: 50%;
         margin-right: -0.75rem; // Images overlap
         border: 0.125rem solid #fff;
@@ -51,7 +50,10 @@ $text-color-light: #999;
     }
   
     .alarm-details {
+      display: flex;
+
       flex: 1;
+      padding-left: 10px;
   
       .alarm-title {
         display: flex;
@@ -60,14 +62,16 @@ $text-color-light: #999;
         margin-bottom: 0.25rem;
   
         .alarm {
-          font-size: 0.875rem;
+          font-size: 1;
           color: #999;
         }
       }
   
       .description {
-        font-size: 1rem;
+        display: flex;
+        font-size: 1.25rem;
         color: #666;
+        align-items: center;
       }
     }
   }

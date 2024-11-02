@@ -44,9 +44,9 @@ const AlarmBox = ({ nickname, type, targetId, message, index, naviAlarm, removeA
 
   const alarmProfileImg = () => {
     if (type === "chat") {
-      return <img src={"/imgs/defaultProfile.png"} alt={'profile'} />;
+      return <img src={require('../../images/default-profile.jpg')} alt={'profile'} />;
     }
-    return <img src={"/imgs/defaultFeed.png"} alt={'feed'} />;
+    return <img src={require('../../images/messenger.png')} alt={'feed'} />;
   };
 
   const alarmDescription = () => {
