@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-
+import '../../scss/Feed.scss'
 const FeedForm = () => {
     const loginUserId = useSelector((state) => state.userSlice.id);
     const [feedFileDtoList, setFeeds] = useState([]);

@@ -1,5 +1,6 @@
 #feed{
-    width: 375px;
+    width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +9,7 @@
 }
 
 .feed_container{
-    width: 375px;
+    width: 100vh;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -25,14 +26,17 @@
     margin-bottom: 60px; /* 푸터 높이만큼 아래에 여백 추가 */
     overflow-y: auto; /* 스크롤 가능하도록 설정 */
     background-color: #f5f5f5; /* 원하는 배경색 */
-    width: 375px;
+    width: 100%;
     box-sizing: border-box;
     height: auto; /* 고정 높이를 없애거나 auto로 설정 */
+    justify-content: space-around;
+    align-items: center;
+
 }
 
 .feed_box {
-    width: 375px;
-    margin-bottom: 20px;
+    width: auto;
+    padding-top: 20px;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
     box-sizing: border-box;
@@ -47,6 +51,8 @@
 .feed_box.slide-in {
     opacity: 1; /* 보이도록 설정 */
     transform: translateX(0); /* 제자리로 이동 */
+    justify-content: center;
+    max-width: 375px;
 }
 
 .feed_box:last-child{
@@ -74,11 +80,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    width: auto;
+    margin-top: 50px;
 }
 
 .user-info {
     display: flex;
     align-items: center;
+    justify-content: left;
 }
 
 .user-info-img{
@@ -121,6 +130,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0px;
+
 }
 
 .feed_content p{
@@ -131,7 +141,8 @@
 .feed_content img {
     width: 375px;
     height: 375px;
-    object-fit: cover;
+    // object-fit: cover;
+    justify-content: center;
 }
 
 .feed_footer {
@@ -193,7 +204,7 @@
 
 .carousel {
     position: relative;
-    width: 375px;
+    width: 100%;
     max-height: 375px;
     margin: 0 auto;
   }

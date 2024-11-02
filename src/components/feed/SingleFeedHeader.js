@@ -1,4 +1,6 @@
 import React ,{useState} from 'react'
+import '../../scss/Feed.scss'
+
 function FeedHeader({profileImage, nickname}) {
   
 
